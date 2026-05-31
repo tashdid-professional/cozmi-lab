@@ -1,34 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Instagram, Send, Star } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Send } from "lucide-react";
 import { footerData } from "@/public/datas/homepage";
 
 export function Footer() {
   return (
-    <footer className="bg-[#4A3728] text-white pt-20 pb-10 px-8 ">
+    <footer className="bg-[#4A3728] text-white pt-24 pb-12">
       {/* Instagram Space Section */}
-      <div className="absolute left-0 right-0 -top-1 translate-y-[-100%]">
-        <div className="py-20 text-center relative bg-[#4A3728]">
-          <div className="relative inline-block">
-             <h2 className="text-5xl headline italic text-white mb-2 relative z-10">Instagram Space</h2>
-             {/* Decorative leaf/flourish background */}
-             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 opacity-20 pointer-events-none">
+      <div className="mb-24 px-8 ">
+        <div className="text-center mb-16 relative">
+          <div className="inline-block relative">
+            <h2 className="headline text-white">Instagram Space</h2>
+            {/* Decorative flourish background */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[60%] w-46 h-46 opacity-20 pointer-events-none">
                 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full stroke-white stroke-1">
                     <path d="M50 10 C50 10 30 40 50 60 M50 10 C50 10 70 40 50 60 M50 30 C50 30 20 50 50 70 M50 30 C50 30 80 50 50 70 M50 50 C50 50 10 70 50 90 M50 50 C50 50 90 70 50 90" />
                 </svg>
              </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-0">
-          {footerData.instagramImages.map((img, idx) => (
+        
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0">
+          {footerData.instagramImages.slice(0, 6).map((img, idx) => (
             <Link key={idx} href="https://instagram.com" target="_blank" className="relative aspect-square overflow-hidden group block">
               <Image
                 src={img}
                 alt={`Instagram ${idx + 1}`}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <Instagram size={32} className="text-white" />
               </div>
@@ -37,81 +37,88 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto mt-[600px] border-t border-white/10 pt-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* Company Info */}
-          <div className="space-y-6">
-            <Link href="/" className="inline-block">
-              <Image src="/images/logo.png" alt="Logo" width={100} height={30} className="brightness-0 invert" />
-            </Link>
-            <p className="text-gray-300 font-lato text-sm leading-relaxed">
+      <div className="max-w-[1400px] mx-auto px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          {/* Column 1: Logo & Info (4/12) */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="flex items-center gap-4 group cursor-pointer">
+              <div className="relative w-12 h-12 brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity">
+                <div className="w-full h-full border-2 border-white rounded-full flex items-center justify-center overflow-hidden">
+                   <Image src="/images/logo.png" alt="Creamz Logo" fill className="object-contain scale-75" />
+                </div>
+              </div>
+              <span className="text-[36px] font-cormorant font-medium tracking-tight">Cozmi Lab</span>
+            </div>
+            
+            <p className="text-gray-300 font-lato text-[15px] leading-relaxed max-w-[360px]">
               {footerData.description}
             </p>
           </div>
 
-          {/* Explore Links */}
-          <div>
-            <h3 className="text-xl headline italic mb-8">Explore</h3>
-            <ul className="space-y-4">
-              {footerData.exploreLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-gray-300 font-lato text-sm flex items-center group">
-                    <Star size={12} className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span className="hover:text-white transition-colors uppercase tracking-widest">{link.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services Links (Reuse header but separate column) */}
-          <div className="pt-14 leading-10">
-             <ul className="space-y-4">
-              {footerData.servicesLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-gray-300 font-lato text-sm flex items-center group">
-                    <Star size={12} className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span className="hover:text-white transition-colors uppercase tracking-widest">{link.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h3 className="text-xl headline italic mb-8">Subscribe To Our Newsletter</h3>
-            <div className="space-y-6">
-               <div className="relative border-b border-gray-400 pb-2">
-                 <input 
-                   type="email" 
-                   placeholder="YOUR MAIL" 
-                   className="bg-transparent w-full font-lato text-xs tracking-[0.2em] outline-none placeholder:text-gray-400"
-                 />
-                 <button className="absolute right-0 top-0">
-                   <Send size={18} className="text-gray-400 rotate-45" />
-                 </button>
-               </div>
-               <p className="text-gray-400 font-lato text-[10px] uppercase tracking-wider">
-                 We Won&apos;t spam. Unsubscribe at any time.
-               </p>
-               <div className="flex items-center gap-4 pt-4">
-                  <span className="text-sm headline italic">Social Media :</span>
-                  <div className="flex gap-2">
-                     <Link href="#" className="w-8 h-8 rounded-full border border-gray-500 flex items-center justify-center hover:bg-white hover:text-[#4A3728] transition-all">
-                       <Facebook size={14} />
-                     </Link>
-                     <Link href="#" className="w-8 h-8 rounded-full border border-gray-500 flex items-center justify-center hover:bg-white hover:text-[#4A3728] transition-all">
-                       <Instagram size={14} />
-                     </Link>
-                     <Link href="#" className="w-8 h-8 rounded-full border border-gray-500 flex items-center justify-center hover:bg-white hover:text-[#4A3728] transition-all">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47V18c0 1.54-.53 3.05-1.5 4.22-1.34 1.6-3.52 2.37-5.55 1.94-2.42-.42-4.44-2.48-4.84-4.89-.42-2.15.39-4.51 2.09-5.91C9.6 12.44 11.23 11.9 12.87 12v3.91c-1.12-.05-2.27.35-3 1.2-.55.67-.84 1.55-.78 2.42.11 1.05.82 2.01 1.79 2.41.97.41 2.11.31 3-.24.72-.45 1.18-1.24 1.2-2.09V.02z" />
-                        </svg>
-                     </Link>
+          {/* Column 2: Explore Links (4/12) */}
+          <div className="lg:col-span-4 lg:pt-2">
+            <h3 className="text-[26px] font-cormorant italic mb-10 tracking-wide">Explore</h3>
+            <div className="grid grid-cols-2 gap-x-12 gap-y-5">
+              {[...footerData.exploreLinks, ...footerData.servicesLinks].map((link) => (
+                <Link key={link.name} href={link.href} className="text-gray-300 font-lato text-[14px] flex items-center group transition-colors">
+                  <div className="mr-3 transform transition-transform group-hover:rotate-90">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 0L6.12257 3.87743L10 5L6.12257 6.12257L5 10L3.87743 6.12257L0 5L3.87743 3.87743L5 0Z" fill="white" className="opacity-40 group-hover:opacity-100 transition-opacity" />
+                    </svg>
                   </div>
-               </div>
+                  <span className="group-hover:text-white transition-colors uppercase tracking-[0.2em] font-medium text-[11px]">{link.name}</span>
+                </Link>
+              ))}
             </div>
+          </div>
+
+          {/* Column 3: Newsletter (4/12) */}
+          <div className="lg:col-span-4 lg:pt-2">
+            <h3 className="text-[26px] font-cormorant italic mb-10 tracking-wide">Subscribe To Our Newsletter</h3>
+            <div className="space-y-8">
+              <div className="relative border-b border-gray-500 pb-3 group">
+                <input 
+                  type="email" 
+                  placeholder="YOUR MAIL" 
+                  className="bg-transparent w-full font-lato text-[11px] tracking-[0.35em] outline-none placeholder:text-gray-500 text-white"
+                />
+                <button className="absolute right-0 top-0 text-gray-500 hover:text-white transition-colors">
+                  <Send size={18} className="rotate-45" />
+                </button>
+              </div>
+              
+              <p className="text-gray-400 font-lato text-[12px] uppercase tracking-[0.15em] leading-relaxed">
+                We Won&apos;t spam. Unsubscribe at any time.
+              </p>
+
+              <div className="flex items-center gap-6 pt-10 border-t border-white/5">
+                <span className="text-[18px] font-cormorant italic tracking-wide">Social Media :</span>
+                <div className="flex gap-4">
+                  {[
+                    { icon: <Linkedin size={18} />, href: '#' },
+                    { icon: <Facebook size={18} />, href: '#' },
+                    { icon: <Instagram size={18} />, href: '#' },
+                  ].map((social, i) => (
+                    <Link 
+                      key={i} 
+                      href={social.href} 
+                      className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white hover:text-[#4A3728] hover:border-white transition-all duration-500"
+                    >
+                      {social.icon}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[11px] font-lato tracking-[0.1em] text-gray-500 ">
+          <p>© 2026 Cozmi Lab | Powered by <a href="https://www.thebigdogdigital.com/" target="_blank" className="text-white font-bold transition-colors">BigDog Digital</a>.</p>
+          <div className="flex gap-10">
+            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

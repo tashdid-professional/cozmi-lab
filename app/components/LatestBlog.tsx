@@ -11,7 +11,7 @@ export function LatestBlog() {
       {/* Section Header */}
       <div className="text-center mb-16 relative">
         <div className="relative inline-block">
-          <h2 className=" headline  mb-2 relative z-10">Our Latest Blog</h2>
+          <h2 className="headline  mb-2 relative z-10">Our Latest Blog</h2>
           {/* Decorative flourish background */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 opacity-10 pointer-events-none">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full stroke-black stroke-1">

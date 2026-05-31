@@ -8,11 +8,11 @@
 }
 
 @utility headline {
-  @apply font-cormorant text-custom italic;
+  @apply font-cormorant text-custom italic text-[48px];
 }
 
 @utility subheadline {
-  @apply text-custom2 uppercase text-[14px] tracking-[3.25px] leading-[24px];
+  @apply text-[#b2a69b] uppercase text-[14px] tracking-[3.25px] leading-[24px];
 }
 
 @layer base {
