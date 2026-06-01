@@ -20,13 +20,13 @@ export const ProductSpecialty = () => {
             Our Product Specialty
           </h2>
           <p className="text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#4B4036]/60 font-lato">
-            {productSpecialties[0]?.description}
+            {productSpecialties.subtitle}
           </p>
         </div>
 
         {/* Icons Grid */}
         <div className="flex flex-wrap justify-center gap-12 md:gap-24 mb-24">
-          {productSpecialties.map((specialty, idx) => {
+          {productSpecialties.icons.map((specialty, idx) => {
             const IconComponent = iconMap[specialty.icon as keyof typeof iconMap] || Beaker;
             return (
               <div key={idx} className="flex flex-col items-center group">
@@ -42,9 +42,9 @@ export const ProductSpecialty = () => {
         </div>
 
         {/* Text Area */}
-        <div className="max-w-4xl mx-auto text-center relative px-6">
-          <p className="text-2xl md:text-4xl font-cormorant text-[#4B4036] leading-[1.6]">
-            Discover A Range Of Luxurious Skincare Products Designed To Rejuvenate And Restore Your Skin. From Cleansers To Serums And Moisturizers, Each Product Is Expertly Formulated For Healthy, Glowing Skin You'll Love.
+        <div className=" mx-auto text-center relative ">
+          <p className="text-2xl md:text-[43px] font-cormorant text-[#4B4036] leading-[1.6]">
+            {productSpecialties.description}
           </p>
         </div>
 

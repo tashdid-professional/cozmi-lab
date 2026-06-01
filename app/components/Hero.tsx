@@ -1,47 +1,127 @@
+"use client";
+
+import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { heroSlides } from "@/public/datas/homepage";
 
 export const Hero = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+    Autoplay({ delay: 4000, stopOnInteraction: false }),
+  ]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi, setSelectedIndex]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+  }, [emblaApi, onSelect]);
+
+  const scrollTo = useCallback(
+    (index: number) => emblaApi && emblaApi.scrollTo(index),
+    [emblaApi]
+  );
+
   return (
-    <section className="relative h-[80vh] min-h-[600px] w-full flex items-center overflow-hidden bg-[#F5F2F0]">
-      {/* Background Image / Content */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="https://images.pexels.com/photos/3785147/pexels-photo-3785147.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          alt="Luxury Cosmetics Banner"
-          fill
-          className="object-cover object-center opacity-80"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/10" />
+    <section className="bg-[#F3F3F3] overflow-hidden relative min-h-[820px] lg:h-[90vh] flex items-center pt-26">
+      <div className="overflow-hidden w-full h-full" ref={emblaRef}>
+        <div className="flex h-full">
+          {heroSlides.map((slide, index) => (
+            <div key={index} className="flex-[0_0_100%] min-w-0 relative flex items-center h-full">
+              <div className="container mx-auto px-6 py-12 md:py-24">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                  
+                  {/* Left Side: Image with Arch and Tree */}
+                  <div className={`relative flex justify-center lg:justify-end order-2 lg:order-1 transition-all duration-1000 ${selectedIndex === index ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
+                    <div className="relative w-[280px] h-[400px] sm:w-[350px] sm:h-[500px] md:w-[450px] md:h-[650px] lg:w-[500px] lg:h-[700px]">
+                      {/* Arch Background */}
+                      <div className="absolute bottom-0 left-0 w-full h-[85%] bg-[#F2D1B3]/50 rounded-t-full z-0 translate-y-4" />
+                      
+                      {/* Girl Image */}
+                      <div className="absolute inset-0 z-10 overflow-hidden flex items-end">
+                        <Image
+                          src={slide.image}
+                          alt={slide.title}
+                          width={600}
+                          height={900}
+                          className="object-contain object-bottom w-full h-full scale-105"
+                          priority={index === 0}
+                        />
+                      </div>
+
+                      {/* Fixed Tree Overlay */}
+                      <div className={`absolute bottom-0 -left-16 w-[180px] h-[270px] sm:w-[250px] sm:h-[350px] md:w-[380px] md:h-[550px] z-20 pointer-events-none overflow-visible transition-all duration-[1000ms] delay-500 ${selectedIndex === index ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-90 blur-sm"}`}>
+                        <Image
+                          src="/images/tree-1.webp"
+                          alt="Decorative tree branch"
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Side: Content */}
+                  <div className="space-y-6 md:space-y-10 max-w-xl order-1 lg:order-2 text-center lg:text-left">
+                    <div className={`space-y-2 transition-all duration-700 delay-300 ${selectedIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+                      <h1 className="font-cormorant text-[48px] sm:text-[60px] md:text-[60px] lg:text-[74px] leading-[1.1] text-[#4B4036] normal-case">
+                        {slide.title}
+                      </h1>
+                    </div>
+                    
+                    <p className={`font-lato text-[#4B4036]/70 text-[16px] md:text-[18px] leading-relaxed max-w-lg mx-auto lg:mx-0 transition-all duration-700 delay-500 font-medium ${selectedIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+                      {slide.description}
+                    </p>
+
+                    {/* Thumbnails row */}
+                    <div className={`hidden md:flex justify-center lg:justify-start gap-4 md:gap-6 pt-4 transition-all duration-700 delay-700 ${selectedIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+                      {slide.thumbnails.map((thumb, i) => (
+                        <div key={i} className="relative w-24 h-16 md:w-46 md:h-20 group cursor-pointer overflow-hidden rounded-r-[40px]  ">
+                          <Image
+                            src={thumb}
+                            alt={`Thumbnail ${i + 1}`}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className={`pt-4 md:pt-8 transition-all duration-700 delay-1000 ${selectedIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+                      <Link 
+                        href={slide.buttonLink}
+                        className="inline-block bg-[#4B3C31] text-white px-10 md:px-14 py-4 md:py-6 text-[12px]  font-bold tracking-[0.2em] uppercase hover:bg-black transition-all duration-300"
+                      >
+                        {slide.buttonText}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-2xl space-y-8">
-          <div className="space-y-4">
-            <span className="subheadline">
-              Luxury Beauty Collection
-            </span>
-            <h1 className="headline md:text-[84px] text-[56px] leading-[1.1] normal-case not-italic block">
-              Reveal Your <br />
-              <span className="italic">Natural Radiance</span>
-            </h1>
-          </div>
-          
-          <p className="font-lato text-[#4B4036] text-[18px] max-w-lg leading-relaxed">
-            Discover our premium range of organic skincare and cosmetics, 
-            crafted to enhance your natural beauty with pure, ethically sourced ingredients.
-          </p>
-
-          <div className="pt-4">
-            <Link 
-              href="/shop"
-              className="inline-block bg-[#4B4036] text-white px-10 py-5 text-[12px] font-bold tracking-[0.3em] uppercase hover:bg-black transition-all duration-300"
-            >
-              Shop Collection
-            </Link>
-          </div>
-        </div>
+      {/* Navigation Dots */}
+      <div className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-30">
+        {heroSlides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => scrollTo(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              selectedIndex === index ? "bg-[#4B4036]" : "bg-[#4B4036]/20"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );

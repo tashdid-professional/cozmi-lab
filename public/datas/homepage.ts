@@ -1,3 +1,42 @@
+export const heroSlides = [
+  {
+    title: "Nourish Your Face And Body.",
+    description: "Blandit aliquam etiam erat velit scelerisque. Enim diam vulputate ut pharetra sit. Auctor urna nunc id cursus metus aliquam. Ut enim ad minim veniam.",
+    buttonText: "APPOINTMENT",
+    buttonLink: "/contact",
+    image: "/images/banner-girl.webp",
+    thumbnails: [
+      "/images/banner-girl.webp",
+      "/images/banner-girl2.png",
+      "/images/banner-girl3.webp"
+    ]
+  },
+  {
+    title: "Reveal Your Natural Radiance",
+    description: "Discover our premium range of organic skincare and cosmetics, crafted to enhance your natural beauty with pure, ethically sourced ingredients.",
+    buttonText: "SHOP COLLECTION",
+    buttonLink: "/shop",
+    image: "/images/banner-girl2.png",
+    thumbnails: [
+      "/images/banner-girl.webp",
+      "/images/banner-girl2.png",
+      "/images/banner-girl3.webp"
+    ]
+  },
+  {
+    title: "Eco-Friendly Beauty Care",
+    description: "Experience the power of nature with our sustainable beauty products. Pure ingredients for a healthier, more radiant you.",
+    buttonText: "EXPLORE MORE",
+    buttonLink: "/about",
+    image: "/images/banner-girl3.webp",
+    thumbnails: [
+      "/images/banner-girl.webp",
+      "/images/banner-girl2.png",
+      "/images/banner-girl3.webp"
+    ]
+  }
+];
+
 export const shopCategories = [
   {
     name: "Cleansers",
@@ -31,24 +70,32 @@ export const shopCategories = [
   }
 ];
 
-export const productSpecialties = [
-  { name: "Cruelty Free", icon: "rabbit", description: "Blandit turpis cursus in hac felis" },
-  { name: "Lab Tested", icon: "beaker", description: "Blandit turpis cursus in hac felis" },
-  { name: "No Alchohol", icon: "ban", description: "Blandit turpis cursus in hac felis" },
-];
+export const productSpecialties = {
+  
+  icons : [
+  { name: "Cruelty Free", icon: "rabbit"},
+  { name: "Lab Tested", icon: "beaker"},
+  { name: "No Alchohol", icon: "ban"},
+  ],
+  subtitle: "Our Product Specialty",
+  description: "Discover a range of luxurious skincare products designed to rejuvenate and restore your skin. From cleansers to serums and moisturizers, each product is expertly formulated for healthy, glowing skin you'll love."
+
+};
+
+
 
 export const footerData = {
   description: "In dictum non consectetur a erat nam at lectus urna. Pulvinar mattis nunc sed blandit libero volutpat sed cras ornare. Nibh sit amet commodo nulla.",
   exploreLinks: [
-    { name: "Careers", href: "/careers" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Support", href: "/support" },
     { name: "About Us", href: "/about" },
-  ],
-  servicesLinks: [
-    { name: "Services", href: "/services" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
+    { name: "Support", href: "/support" },
+  ],
+  servicesLinks: [
+    { name: "FAQ", href: "/faq" },
+    { name: "Privacy Policy", href: "/privacy-policy" },
+    { name: "Terms & Conditions", href: "/terms-conditions" },
     { name: "Testimonials", href: "/testimonials" },
   ],
   socials: [

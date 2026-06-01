@@ -28,14 +28,14 @@ export const ShopCategory = () => {
         </div>
 
         {/* Categories Grid - Adjusted for 3 up / 2 down layout from image */}
-        <div className="flex flex-wrap justify-center gap-12 md:gap-20">
+        <div className="flex flex-wrap justify-center gap-12 md:gap-x-56 max-w-6xl mx-auto">
           {shopCategories.map((category, idx) => (
             <Link 
               key={idx} 
               href={`/shop?category=${category.slug}`}
               className="group flex flex-col items-center text-center max-w-50"
             >
-              <div className="relative w-40 h-40 md:w-56 md:h-56 mb-6">
+              <div className="relative w-40 h-40 md:w-62 md:h-62 mb-6">
                 {/* Circular Container */}
                 <div className="w-full h-full rounded-full overflow-hidden relative ring-1 ring-neutral-100 group-hover:shadow-2xl transition-all duration-500">
                   <Image 
@@ -48,10 +48,10 @@ export const ShopCategory = () => {
                 {/* Decorative Element on hover could go here */}
               </div>
               
-              <h3 className="text-2xl md:text-[28px] font-cormorant italic text-[#4B4036] mb-1 group-hover:text-black transition-colors">
+              <h3 className="text-2xl md:text-[36px] font-cormorant italic text-[#4B4036] mb-1 group-hover:text-black transition-colors">
                 {category.name}
               </h3>
-              <p className="text-[10px] md:text-[11px] tracking-widest text-neutral-400 uppercase font-lato">
+              <p className="text-[10px] md:text-[14px] tracking-widest text-neutral-400 uppercase font-lato">
                 ({category.itemCount} ITEMS)
               </p>
             </Link>

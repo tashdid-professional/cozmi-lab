@@ -5,7 +5,7 @@ import { footerData } from "@/public/datas/homepage";
 
 export function Footer() {
   return (
-    <footer className="bg-[#4A3728] text-white pt-24 pb-12">
+    <footer className="bg-[#4B4036] text-white pt-24 pb-12">
       {/* Instagram Space Section */}
       <div className="mb-24 px-8 ">
         <div className="text-center mb-16 relative">
@@ -20,8 +20,8 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0">
-          {footerData.instagramImages.slice(0, 6).map((img, idx) => (
+        <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 px-8">
+          {footerData.instagramImages.slice(0, 5).map((img, idx) => (
             <Link key={idx} href="https://instagram.com" target="_blank" className="relative aspect-square overflow-hidden group block">
               <Image
                 src={img}
@@ -43,14 +43,14 @@ export function Footer() {
           <div className="lg:col-span-4 space-y-8">
             <div className="flex items-center gap-4 group cursor-pointer">
               <div className="relative w-12 h-12 brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity">
-                <div className="w-full h-full border-2 border-white rounded-full flex items-center justify-center overflow-hidden">
+                <div className="w-full h-full   rounded-full flex items-center justify-center overflow-hidden">
                    <Image src="/images/logo.png" alt="Creamz Logo" fill className="object-contain scale-75" />
                 </div>
               </div>
               <span className="text-[36px] font-cormorant font-medium tracking-tight">Cozmi Lab</span>
             </div>
             
-            <p className="text-gray-300 font-lato text-[15px] leading-relaxed max-w-[360px]">
+            <p className="text-[#b2a69b] font-lato text-[17px] leading-relaxed max-w-[360px]">
               {footerData.description}
             </p>
           </div>
@@ -66,7 +66,7 @@ export function Footer() {
                       <path d="M5 0L6.12257 3.87743L10 5L6.12257 6.12257L5 10L3.87743 6.12257L0 5L3.87743 3.87743L5 0Z" fill="white" className="opacity-40 group-hover:opacity-100 transition-opacity" />
                     </svg>
                   </div>
-                  <span className="group-hover:text-white transition-colors uppercase tracking-[0.2em] font-medium text-[11px]">{link.name}</span>
+                  <span className="text-[#b2a69b] hover:text-white transition-colors  tracking-[0.2em]  text-[16px]">{link.name}</span>
                 </Link>
               ))}
             </div>
@@ -74,25 +74,25 @@ export function Footer() {
 
           {/* Column 3: Newsletter (4/12) */}
           <div className="lg:col-span-4 lg:pt-2">
-            <h3 className="text-[26px] font-cormorant italic mb-10 tracking-wide">Subscribe To Our Newsletter</h3>
+            <h3 className="text-[28px] font-cormorant italic mb-10 tracking-wide">Subscribe To Our Newsletter</h3>
             <div className="space-y-8">
               <div className="relative border-b border-gray-500 pb-3 group">
                 <input 
                   type="email" 
                   placeholder="YOUR MAIL" 
-                  className="bg-transparent w-full font-lato text-[11px] tracking-[0.35em] outline-none placeholder:text-gray-500 text-white"
+                  className="bg-transparent w-full font-lato text-[14px] tracking-[0.35em] outline-none placeholder:text-[#b2a69b] text-white"
                 />
                 <button className="absolute right-0 top-0 text-gray-500 hover:text-white transition-colors">
                   <Send size={18} className="rotate-45" />
                 </button>
               </div>
               
-              <p className="text-gray-400 font-lato text-[12px] uppercase tracking-[0.15em] leading-relaxed">
+              <p className="text-[#b2a69b] font-lato text-[15px] tracking-[0.05em] ">
                 We Won&apos;t spam. Unsubscribe at any time.
               </p>
 
-              <div className="flex items-center gap-6 pt-10 border-t border-white/5">
-                <span className="text-[18px] font-cormorant italic tracking-wide">Social Media :</span>
+              <div className="flex items-center gap-6 pt-3 border-t border-white/5">
+                <span className="text-[18px]  tracking-wide text-[#b2a69b]">Social Media :</span>
                 <div className="flex gap-4">
                   {[
                     { icon: <Linkedin size={18} />, href: '#' },
@@ -114,12 +114,9 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[11px] font-lato tracking-[0.1em] text-gray-500 ">
+        <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-center items-center gap-6 text-[11px] font-lato tracking-[0.1em] text-gray-500 ">
           <p>© 2026 Cozmi Lab | Powered by <a href="https://www.thebigdogdigital.com/" target="_blank" className="text-white font-bold transition-colors">BigDog Digital</a>.</p>
-          <div className="flex gap-10">
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
-          </div>
+        
         </div>
       </div>
     </footer>

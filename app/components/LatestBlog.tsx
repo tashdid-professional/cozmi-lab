@@ -27,7 +27,7 @@ export function LatestBlog() {
         {latestBlogs.map((blog) => (
           <div key={blog.id} className="group cursor-pointer">
             {/* Blog Image */}
-            <div className="relative aspect-[4/3] overflow-hidden mb-6">
+            <div className="relative aspect-[16/9] overflow-hidden mb-6">
               <Image
                 src={blog.image}
                 alt={blog.title}

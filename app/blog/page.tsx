@@ -58,14 +58,14 @@ export default function BlogPage() {
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="flex flex-col lg:flex-row gap-12">
             {/* Main Blog Grid */}
-            <div className="lg:w-3/4">
+            <div className="lg:w-[70%]">
               {currentBlogs.length > 0 ? (
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
                     {currentBlogs.map((blog) => (
                       <div key={blog.id} className="group cursor-pointer">
                         {/* Blog Image */}
-                        <div className="relative aspect-[4/3] overflow-hidden mb-6">
+                        <div className="relative aspect-[16/9] overflow-hidden mb-6">
                           <Image
                             src={blog.image}
                             alt={blog.title}
@@ -134,10 +134,10 @@ export default function BlogPage() {
             </div>
 
             {/* Sidebar */}
-            <aside className="lg:w-1/4 space-y-12">
+            <aside className="lg:w-[30%] space-y-12">
               {/* Search Widget */}
               <div className="space-y-6">
-                <h3 className="text-3xl font-cormorant italic text-[#4B4036]">
+                <h3 className="text-[36px] font-cormorant italic text-[#4B4036]">
                   Search
                 </h3>
                 <div className="relative group">
@@ -146,7 +146,7 @@ export default function BlogPage() {
                     placeholder="SEARCH ARTICLES..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full border-b border-neutral-200 py-3 pr-10 text-[11px] font-lato tracking-[0.2em] outline-none focus:border-custom transition-colors"
+                    className="w-full border-b border-neutral-200 py-3 pr-10 text-[14px] font-lato tracking-[0.2em] outline-none focus:border-custom transition-colors"
                   />
                   <Search className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[#4B4036]/40 group-focus-within:text-custom transition-colors cursor-pointer" />
                 </div>
@@ -154,14 +154,14 @@ export default function BlogPage() {
 
               {/* Categories Widget */}
               <div className="space-y-6">
-                <h3 className="text-3xl font-cormorant italic text-[#4B4036]">
+                <h3 className="text-[36px] font-cormorant italic text-[#4B4036]">
                   Blog categories
                 </h3>
                 <ul className="space-y-4">
                   <li>
                     <button
                       onClick={() => setSelectedCategory(null)}
-                      className={`text-[11px] font-lato tracking-[0.2em] uppercase transition-colors hover:text-custom w-full text-left ${
+                      className={`text-[14px] font-lato tracking-[0.2em] uppercase transition-colors hover:text-custom w-full text-left ${
                         selectedCategory === null ? "text-custom font-bold" : "text-[#4B4036]/60"
                       }`}
                     >
@@ -172,7 +172,7 @@ export default function BlogPage() {
                     <li key={cat.name}>
                       <button
                         onClick={() => setSelectedCategory(cat.name)}
-                        className={`text-[11px] font-lato tracking-[0.2em] uppercase transition-colors hover:text-custom w-full text-left ${
+                        className={`text-[14px] font-lato tracking-[0.2em] uppercase transition-colors hover:text-custom w-full text-left ${
                           selectedCategory === cat.name ? "text-custom font-bold" : "text-[#4B4036]/60"
                         }`}
                       >
