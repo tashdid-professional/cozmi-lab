@@ -82,7 +82,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           {/* Content */}
           <div className="flex flex-col flex-grow text-center space-y-3 bg-white py-6">
-            <h3 className="font-cormorant italic text-[24px] text-[#4B4036] leading-tight font-medium group-hover:text-[#b2a69b] transition-colors">
+            <h3 className="font-cormorant italic text-[24px] text-[#4B4036] leading-tight font-medium hover:text-[#b2a69b] transition-colors">
               {product.name}
             </h3>
             

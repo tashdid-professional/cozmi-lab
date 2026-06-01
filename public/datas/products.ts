@@ -228,4 +228,48 @@ export const products: Product[] = [
     purchaseLink: "#",
     featured: false
   },
+  {
+    id: 13,
+    name: "MOISTURE CREAM",
+    category: "Creams",
+    price: 34.0,
+    image: "https://picsum.photos/800/1000?random=17",
+    badge: "Sale",
+    description: "Deep hydrating moisture cream for all skin types.",
+    slug: "moisture-cream",
+    tags: ["Moisture", "Creams"],
+    gallery: ["https://picsum.photos/800/1000?random=17", "https://picsum.photos/800/1000?random=117"],
+    videos: ["vP9X2V9c3Uw"],
+    purchaseLink: "#",
+    featured: true
+  },
+  {
+    id: 14,
+    name: "NIGHT REPAIR",
+    category: "Creams",
+    price: 42.0,
+    image: "https://picsum.photos/800/1000?random=18",
+    description: "Intensive night repair cream with clinical results.",
+    slug: "night-repair",
+    tags: ["Repair", "Creams"],
+    gallery: ["https://picsum.photos/800/1000?random=18", "https://picsum.photos/800/1000?random=118"],
+    videos: ["vP9X2V9c3Uw"],
+    purchaseLink: "#",
+    featured: false
+  },
+  {
+    id: 15,
+    name: "CLEANSING FOAM",
+    category: "Cleansers",
+    price: 24.0,
+    image: "https://picsum.photos/800/1000?random=19",
+    badge: "New",
+    description: "Gentle cleansing foam for sensitive skin.",
+    slug: "cleansing-foam",
+    tags: ["Cleanser", "Foam"],
+    gallery: ["https://picsum.photos/800/1000?random=19", "https://picsum.photos/800/1000?random=119"],
+    videos: ["vP9X2V9c3Uw"],
+    purchaseLink: "#",
+    featured: true
+  }
 ];

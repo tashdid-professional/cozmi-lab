@@ -1,0 +1,78 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { shopCategories } from "@/public/datas/homepage";
+
+export const ShopCategory = () => {
+  return (
+    <section className="py-20 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 relative">
+        {/* Section Header */}
+        <div className="text-center mb-16 relative z-10">
+          <h2 className="text-4xl md:text-5xl font-cormorant italic text-[#4B4036] mb-4">
+            Shop Category
+          </h2>
+          <p className="text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#4B4036]/60 font-lato">
+            POPULAR CATEGORIES
+          </p>
+          
+          {/* Decorative Branch Placeholder */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 pointer-events-none -z-10">
+            <svg width="200" height="100" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 50Q100 0 190 50" stroke="#4B4036" strokeWidth="0.5"/>
+              <path d="M50 35L30 20M120 25L140 10" stroke="#4B4036" strokeWidth="0.5"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Categories Grid - Adjusted for 3 up / 2 down layout from image */}
+        <div className="flex flex-wrap justify-center gap-12 md:gap-20">
+          {shopCategories.map((category, idx) => (
+            <Link 
+              key={idx} 
+              href={`/shop?category=${category.slug}`}
+              className="group flex flex-col items-center text-center max-w-50"
+            >
+              <div className="relative w-40 h-40 md:w-56 md:h-56 mb-6">
+                {/* Circular Container */}
+                <div className="w-full h-full rounded-full overflow-hidden relative ring-1 ring-neutral-100 group-hover:shadow-2xl transition-all duration-500">
+                  <Image 
+                    src={category.image} 
+                    alt={category.name} 
+                    fill 
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+                {/* Decorative Element on hover could go here */}
+              </div>
+              
+              <h3 className="text-2xl md:text-[28px] font-cormorant italic text-[#4B4036] mb-1 group-hover:text-black transition-colors">
+                {category.name}
+              </h3>
+              <p className="text-[10px] md:text-[11px] tracking-widest text-neutral-400 uppercase font-lato">
+                ({category.itemCount} ITEMS)
+              </p>
+            </Link>
+          ))}
+        </div>
+
+        {/* Floating Decorative Flowers (Absolute Positioned) */}
+        <div className="absolute -bottom-10 -left-10 w-48 h-48 opacity-20 pointer-events-none rotate-12 hidden md:block">
+           <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 90Q30 40 50 10" stroke="#4B4036" strokeWidth="0.5"/>
+              <circle cx="50" cy="10" r="2" fill="#4B4036"/>
+              <path d="M10 90Q50 70 90 80" stroke="#4B4036" strokeWidth="0.5"/>
+           </svg>
+        </div>
+        <div className="absolute top-0 -right-10 w-48 h-48 opacity-20 pointer-events-none -rotate-12 hidden md:block">
+           <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M90 10Q70 60 50 90" stroke="#4B4036" strokeWidth="0.5"/>
+              <path d="M90 10Q50 30 10 20" stroke="#4B4036" strokeWidth="0.5"/>
+           </svg>
+        </div>
+      </div>
+    </section>
+  );
+};
