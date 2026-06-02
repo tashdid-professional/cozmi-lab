@@ -37,12 +37,12 @@ export default function AboutPage() {
             {/* Left: Content */}
             <div className="order-2 lg:order-1">
               <div className="relative mb-6">
+                <h2 className="text-4xl md:text-[48px] leading-[1.1] font-cormorant italic text-[#4B4036] mb-8 max-w-md">
+                  {aboutData.title}
+                </h2>
                 <span className="text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#4B4036]/60 font-lato block mb-4">
                   {aboutData.subtitle}
                 </span>
-                <h2 className="text-4xl md:text-[64px] leading-[1.1] font-cormorant italic text-[#4B4036] mb-8 max-w-md">
-                  {aboutData.title}
-                </h2>
                 {/* Decorative leaf element */}
                 <div className="absolute -top-10 -left-6 opacity-10 pointer-events-none -rotate-12">
                    <svg width="140" height="140" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,11 +52,11 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <p className="text-[#777] text-base md:text-[17px] leading-[1.8] mb-12 max-w-xl font-lato">
+              <p className="text-[#4B4036] text-base md:text-[18px] leading-[1.8] mb-12 max-w-xl font-lato">
                 {aboutData.description}
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-end mb-12">
+              <div className="grid grid-cols-3 gap-12 items-end mb-12">
                 {/* Rating */}
                 <div>
                   <div className="text-5xl md:text-6xl font-cormorant text-[#4B4036] mb-4">
@@ -106,10 +106,10 @@ export default function AboutPage() {
               </div>
 
               <Link 
-                href="/shop" 
-                className="inline-block px-10 py-5 bg-[#4B4036] text-white text-[11px] tracking-[0.2em] uppercase font-bold hover:bg-black transition-all duration-300"
+                href={aboutData.buttonLink}
+                className="inline-block px-10 py-3.5 lg:mx-0 mx-auto bg-[#4B4036] text-white text-[11px] tracking-[0.2em] uppercase font-bold hover:bg-black transition-all duration-300 "
               >
-                More Details
+                {aboutData.buttonText}
               </Link>
             </div>
 
@@ -163,7 +163,7 @@ export default function AboutPage() {
         </div>
       </main>
 
-      <Footer />
+      
     </div>
   );
 }

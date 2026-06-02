@@ -18,10 +18,10 @@ export default function ContactPage() {
             <h1 className="text-4xl md:text-[64px] font-cormorant italic text-[#4B4036] mb-6">
               Contact Us
             </h1>
-            <div className="flex items-center justify-center gap-3 text-[11px] md:text-[11px] uppercase tracking-[0.2em] text-custom font-medium font-lato">
-              <span className="text-custom font-medium">Home</span>
+            <div className="flex items-center justify-center gap-3 text-[11px] md:text-[11px]  tracking-[0.2em] text-custom font-medium font-lato">
+              <span className="text-custom font-medium uppercase">Home</span>
               <span className="text-neutral-300">/</span>
-              <Link href="/contact" className="text-[#4B4036]/60 hover:text-black transition-colors">Contact Us</Link>
+              <Link href="/contact" className="text-[#4B4036]/60 hover:text-black transition-colors uppercase">Contact Us</Link>
             </div>
           </div>
         </div>
@@ -32,7 +32,7 @@ export default function ContactPage() {
             {/* Left Column: Info */}
             <div>
               <div className="relative mb-8 md:mb-10">
-                <h2 className="text-4xl md:text-[54px] font-cormorant italic text-[#4B4036] relative z-10">
+                <h2 className="text-4xl md:text-[48px] font-cormorant italic text-[#4B4036] relative z-10">
                   Contact Us
                 </h2>
                 {/* Decorative Element Placeholder (like the leaf in the image) */}
@@ -44,29 +44,29 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <p className="text-[#777] text-base md:text-[17px] leading-[1.8] mb-12 max-w-lg">
+              <p className="text-[#] text-base md:text-[18px] leading-[1.8] mb-12 max-w-lg">
                 Nulla facilisi morbi tempus iaculis. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Lectus nulla at volutpat diam ut venenatis. Odio aenean sed adipiscing diam donec adipiscing tristique risus nec. Cras adipiscing enim eu turpis egestas pretium. Tristique et egestas quis ipsum. Massa vitae tortor condimentum lacinia. Magna fringilla urna porttitor rhonc.
               </p>
 
               <div className="space-y-6 text-[#4B4036]">
                 <p className="text-sm md:text-base">
-                  <span className="font-bold tracking-widest uppercase text-[12px] mr-2">Address:</span>
-                  <span className="text-[#777]">58 A, East Madison Street, Baltimore, MD, USA 4508</span>
+                  <span className="font-bold   text-[18px] mr-2">Address:</span>
+                  <span className="text-[#4b4036]">58 A, East Madison Street, Baltimore, MD, USA 4508</span>
                 </p>
                 <div className="flex flex-wrap gap-x-12 gap-y-4">
                   <p className="text-sm md:text-base">
-                    <span className="font-bold tracking-widest uppercase text-[12px] mr-2">Mail:</span>
-                    <a href="mailto:info@creamz.com" className="text-[#777] hover:text-black transition-colors">info@creamz.com</a>
+                    <span className="font-bold   text-[18px] mr-2">Mail:</span>
+                    <a href="mailto:info@creamz.com" className="text-[#] hover:text-black transition-colors">info@creamz.com</a>
                   </p>
                   <p className="text-sm md:text-base">
-                    <span className="font-bold tracking-widest uppercase text-[12px] mr-2">Phone:</span>
-                    <a href="tel:0000123456789" className="text-[#777] hover:text-black transition-colors">0000 - 123 - 456789</a>
+                    <span className="font-bold   text-[18px] mr-2">Phone:</span>
+                    <a href="tel:0000123456789" className="text-[#] hover:text-black transition-colors">0000 - 123 - 456789</a>
                   </p>
                 </div>
               </div>
 
               <div className="mt-12">
-                <p className="font-bold tracking-widest uppercase text-[12px] text-[#4B4036] mb-6">Social Media :</p>
+                <p className="font-bold   text-[18px] text-[#4B4036] mb-6">Social Media :</p>
                 <div className="flex gap-4">
                   <a href="#" className="w-10 h-10 rounded-full bg-[#4B4036] flex items-center justify-center text-white hover:bg-black transition-all">
                     <Linkedin size={18} fill="currentColor" />
@@ -88,7 +88,7 @@ export default function ContactPage() {
                   <input 
                     type="text" 
                     placeholder="YOUR NAME" 
-                    className="w-full py-4 bg-transparent border-b border-neutral-200 outline-none focus:border-[#4B4036] transition-all text-[11px] tracking-[0.2em] placeholder:text-neutral-400 uppercase"
+                    className="w-full py-4 bg-transparent border-b border-neutral-200 outline-none focus:border-[#4B4036] transition-all text-[14px] tracking-[0.2em] placeholder:text-neutral-400 "
                   />
                 </div>
                 
@@ -96,7 +96,7 @@ export default function ContactPage() {
                   <input 
                     type="email" 
                     placeholder="YOUR EMAIL" 
-                    className="w-full py-4 bg-transparent border-b border-neutral-200 outline-none focus:border-[#4B4036] transition-all text-[11px] tracking-[0.2em] placeholder:text-neutral-400 uppercase"
+                    className="w-full py-4 bg-transparent border-b border-neutral-200 outline-none focus:border-[#4B4036] transition-all text-[14px] tracking-[0.2em] placeholder:text-neutral-400 "
                   />
                 </div>
 
@@ -104,7 +104,7 @@ export default function ContactPage() {
                   <input 
                     type="tel" 
                     placeholder="CONTACT NUMBER" 
-                    className="w-full py-4 bg-transparent border-b border-neutral-200 outline-none focus:border-[#4B4036] transition-all text-[11px] tracking-[0.2em] placeholder:text-neutral-400 uppercase"
+                    className="w-full py-4 bg-transparent border-b border-neutral-200 outline-none focus:border-[#4B4036] transition-all text-[14px] tracking-[0.2em] placeholder:text-neutral-400 "
                   />
                 </div>
 
@@ -112,24 +112,15 @@ export default function ContactPage() {
                   <textarea 
                     placeholder="COMMENTS" 
                     rows={4}
-                    className="w-full py-4 bg-transparent border-b border-neutral-200 outline-none focus:border-[#4B4036] transition-all text-[11px] tracking-[0.2em] placeholder:text-neutral-400 uppercase resize-none"
+                    className="w-full py-4 bg-transparent border-b border-neutral-200 outline-none focus:border-[#4B4036] transition-all text-[14px] tracking-[0.2em] placeholder:text-neutral-400  resize-none"
                   ></textarea>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <input 
-                    type="checkbox" 
-                    id="copy" 
-                    className="w-5 h-5 accent-[#4B4036] rounded-full border-neutral-300"
-                  />
-                  <label htmlFor="copy" className="text-[13px] text-[#777] cursor-pointer">
-                    Send copy of this message to my e-mail address
-                  </label>
-                </div>
+             
 
                 <button 
                   type="submit" 
-                  className="px-10 py-5 bg-[#4B4036] text-white text-[11px] tracking-[0.2em] uppercase font-bold hover:bg-black transition-all duration-300"
+                  className="px-10 py-3 bg-[#4B4036] text-white text-[11px] tracking-[0.2em]  font-medium hover:bg-black transition-all duration-300 uppercase"
                 >
                   Send Message
                 </button>

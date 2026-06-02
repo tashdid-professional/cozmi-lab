@@ -62,7 +62,7 @@ export function Footer() {
               {[...footerData.exploreLinks, ...footerData.servicesLinks].map((link) => (
                 <Link key={link.name} href={link.href} className="text-gray-300 font-lato text-[14px] flex items-center group transition-colors">
                   <div className="mr-3 transform transition-transform group-hover:rotate-90">
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5 0L6.12257 3.87743L10 5L6.12257 6.12257L5 10L3.87743 6.12257L0 5L3.87743 3.87743L5 0Z" fill="white" className="opacity-40 group-hover:opacity-100 transition-opacity" />
                     </svg>
                   </div>

@@ -16,5 +16,7 @@ export const aboutData = {
     "https://picsum.photos/200/200?random=2",
     "https://picsum.photos/200/200?random=3"
   ],
-  extraPeoples: 26
+  extraPeoples: 26,
+  buttonText: "More Details",
+  buttonLink: "/shop"
 };

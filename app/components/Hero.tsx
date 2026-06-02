@@ -30,7 +30,7 @@ export const Hero = () => {
   );
 
   return (
-    <section className="bg-[#F3F3F3] overflow-hidden relative min-h-[820px] lg:h-[90vh] flex items-center pt-26">
+    <section className="bg-[#F3F3F3] overflow-hidden relative min-h-[820px] lg:h-[90vh] flex items-center lg:pt-26 pt-10">
       <div className="overflow-hidden w-full h-full" ref={emblaRef}>
         <div className="flex h-full">
           {heroSlides.map((slide, index) => (
@@ -69,7 +69,7 @@ export const Hero = () => {
                   </div>
 
                   {/* Right Side: Content */}
-                  <div className="space-y-6 md:space-y-10 max-w-xl order-1 lg:order-2 text-center lg:text-left">
+                  <div className="space-y-6 md:space-y-10 max-w-xl order-2 text-center lg:text-left">
                     <div className={`space-y-2 transition-all duration-700 delay-300 ${selectedIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
                       <h1 className="font-cormorant text-[48px] sm:text-[60px] md:text-[60px] lg:text-[74px] leading-[1.1] text-[#4B4036] normal-case">
                         {slide.title}

@@ -87,16 +87,17 @@ export const productSpecialties = {
 export const footerData = {
   description: "In dictum non consectetur a erat nam at lectus urna. Pulvinar mattis nunc sed blandit libero volutpat sed cras ornare. Nibh sit amet commodo nulla.",
   exploreLinks: [
-    { name: "About Us", href: "/about" },
-    { name: "Blog", href: "/blog" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
-    { name: "Support", href: "/support" },
+    { name: "Shop", href: "/shop" },
   ],
   servicesLinks: [
+    { name: "Blog", href: "/blog" },
     { name: "FAQ", href: "/faq" },
     { name: "Privacy Policy", href: "/privacy-policy" },
     { name: "Terms & Conditions", href: "/terms-conditions" },
-    { name: "Testimonials", href: "/testimonials" },
+    
   ],
   socials: [
     { name: "Facebook", href: "https://facebook.com" },
