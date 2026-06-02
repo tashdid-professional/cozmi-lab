@@ -25,7 +25,11 @@ export function LatestBlog() {
       {/* Blog Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {latestBlogs.map((blog) => (
+          
           <div key={blog.id} className="group cursor-pointer">
+             <Link 
+                href={`/blog/${blog.slug}`}>
+               
             {/* Blog Image */}
             <div className="relative aspect-[16/9] overflow-hidden mb-6">
               <Image
@@ -47,13 +51,14 @@ export function LatestBlog() {
               <p className="font-lato text-custom leading-relaxed line-clamp-2">
                 {blog.excerpt}
               </p>
-              <Link 
-                href={`/blog/${blog.slug}`}
-                className="inline-block font-lato text-[14px] tracking-[0.2em] text-[#333] uppercase border-b border-[#333] pb-1 hover:text-gray-500 hover:border-gray-500 transition-all pt-2"
-              >
-                Read More
-              </Link>
+
+                <div  className="inline-block font-lato text-[14px] tracking-[0.2em] text-[#333] uppercase border-b border-[#333] pb-1 hover:text-gray-500 hover:border-gray-500 transition-all pt-2"
+            >
+                  Read More
+                </div>
+              
             </div>
+            </Link>
           </div>
         ))}
       </div>

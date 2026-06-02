@@ -84,8 +84,8 @@ export default function BlogDetailsPage() {
                 {/* Description - Justified and Aligned */}
                 <div className="font-lato text-custom leading-relaxed text-justify space-y-6 text-[16px]">
                   <p>{blog.description}</p>
-                  {/* Additional dummy text if needed to make it look substantial like a real post */}
-                  <p>In dictum non consectetur a erat nam at lectus urna. Pulvinar mattis nunc sed blandit libero volutpat sed cras ornare. Nibh sit amet commodo nulla facilisi nullam vehicula. Adipiscing elit pellentesque habitant morbi tristique senectus et netus. Enim sed faucibus turpis in hac habitasse platea dictumst quisque.</p>
+                 
+                 
                 </div>
 
                 {/* Navigation - Previous/Next Buttons */}

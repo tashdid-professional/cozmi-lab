@@ -22,15 +22,22 @@ export default function BlogPage() {
 
   // Filtering logic
   const filteredBlogs = blogs.filter((blog) => {
-    const matchesSearch = blog.title.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory ? blog.category === selectedCategory : true;
+    const matchesSearch = blog.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const matchesCategory = selectedCategory
+      ? blog.category === selectedCategory
+      : true;
     return matchesSearch && matchesCategory;
   });
 
   // Pagination logic
   const totalPages = Math.ceil(filteredBlogs.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const currentBlogs = filteredBlogs.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const currentBlogs = filteredBlogs.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
 
   const goToPage = (page: number) => {
     setCurrentPage(page);
@@ -49,7 +56,12 @@ export default function BlogPage() {
             <div className="flex items-center justify-center gap-3 text-[11px] md:text-[11px] uppercase tracking-[0.2em] text-custom font-medium font-lato">
               <span className="text-custom font-medium">Home</span>
               <span className="text-neutral-300">/</span>
-              <Link href="/blog" className="text-[#4B4036]/60 hover:text-black transition-colors">Blog</Link>
+              <Link
+                href="/blog"
+                className="text-[#4B4036]/60 hover:text-black transition-colors"
+              >
+                Blog
+              </Link>
             </div>
           </div>
         </div>
@@ -64,6 +76,10 @@ export default function BlogPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
                     {currentBlogs.map((blog) => (
                       <div key={blog.id} className="group cursor-pointer">
+                        <Link
+                            href={`/blog/${blog.slug}`}
+                            
+                          >
                         {/* Blog Image */}
                         <div className="relative aspect-[16/9] overflow-hidden mb-6">
                           <Image
@@ -85,13 +101,11 @@ export default function BlogPage() {
                           <p className="font-lato text-custom leading-relaxed line-clamp-2">
                             {blog.excerpt}
                           </p>
-                          <Link 
-                            href={`/blog/${blog.slug}`}
-                            className="inline-block font-lato text-[14px] tracking-[0.2em] text-[#333] uppercase border-b border-[#333] pb-1 hover:text-gray-500 hover:border-gray-500 transition-all pt-2"
-                          >
-                            Read More
-                          </Link>
+                          
+                            <div className="inline-block font-lato text-[14px] tracking-[0.2em] text-[#333] uppercase border-b border-[#333] pb-1 hover:text-gray-500 hover:border-gray-500 transition-all pt-2"
+                            >Read More</div>
                         </div>
+                          </Link>
                       </div>
                     ))}
                   </div>
@@ -99,19 +113,21 @@ export default function BlogPage() {
                   {/* Pagination */}
                   {totalPages > 1 && (
                     <div className="mt-20 flex justify-center items-center gap-4">
-                      {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                        <button
-                          key={page}
-                          onClick={() => goToPage(page)}
-                          className={`min-w-10 h-10 px-2 flex items-center justify-center text-[12px] font-lato tracking-widest transition-all duration-300 ${
-                            currentPage === page
-                              ? "bg-custom text-white"
-                              : "text-[#4B4036] hover:text-custom"
-                          }`}
-                        >
-                          {page.toString().padStart(2, "0")}
-                        </button>
-                      ))}
+                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                        (page) => (
+                          <button
+                            key={page}
+                            onClick={() => goToPage(page)}
+                            className={`min-w-10 h-10 px-2 flex items-center justify-center text-[12px] font-lato tracking-widest transition-all duration-300 ${
+                              currentPage === page
+                                ? "bg-custom text-white"
+                                : "text-[#4B4036] hover:text-custom"
+                            }`}
+                          >
+                            {page.toString().padStart(2, "0")}
+                          </button>
+                        ),
+                      )}
                     </div>
                   )}
                 </>
@@ -162,7 +178,9 @@ export default function BlogPage() {
                     <button
                       onClick={() => setSelectedCategory(null)}
                       className={`text-[14px] font-lato tracking-[0.2em] uppercase transition-colors hover:text-custom w-full text-left ${
-                        selectedCategory === null ? "text-custom font-bold" : "text-[#4B4036]/60"
+                        selectedCategory === null
+                          ? "text-custom font-bold"
+                          : "text-[#4B4036]/60"
                       }`}
                     >
                       All Articles ({blogs.length})
@@ -173,7 +191,9 @@ export default function BlogPage() {
                       <button
                         onClick={() => setSelectedCategory(cat.name)}
                         className={`text-[14px] font-lato tracking-[0.2em] uppercase transition-colors hover:text-custom w-full text-left ${
-                          selectedCategory === cat.name ? "text-custom font-bold" : "text-[#4B4036]/60"
+                          selectedCategory === cat.name
+                            ? "text-custom font-bold"
+                            : "text-[#4B4036]/60"
                         }`}
                       >
                         {cat.name} ({cat.count})
