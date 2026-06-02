@@ -2,11 +2,16 @@
 
 import React from "react";
 import Link from "next/link";
-import { Navbar } from "@/app/components/Navbar";
-import { Footer } from "@/app/components/Footer";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { contactData } from "@/public/datas/homepage";
 
 export default function ContactPage() {
+  const iconMap: { [key: string]: any } = {
+    Linkedin: Linkedin,
+    Facebook: Facebook,
+    Instagram: Instagram,
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
      
@@ -45,22 +50,22 @@ export default function ContactPage() {
               </div>
 
               <p className="text-[#] text-base md:text-[18px] leading-[1.8] mb-12 max-w-lg">
-                Nulla facilisi morbi tempus iaculis. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Lectus nulla at volutpat diam ut venenatis. Odio aenean sed adipiscing diam donec adipiscing tristique risus nec. Cras adipiscing enim eu turpis egestas pretium. Tristique et egestas quis ipsum. Massa vitae tortor condimentum lacinia. Magna fringilla urna porttitor rhonc.
+                {contactData.description}
               </p>
 
               <div className="space-y-6 text-[#4B4036]">
                 <p className="text-sm md:text-base">
                   <span className="font-bold   text-[18px] mr-2">Address:</span>
-                  <span className="text-[#4b4036]">58 A, East Madison Street, Baltimore, MD, USA 4508</span>
+                  <span className="text-[#4b4036]">{contactData.address}</span>
                 </p>
                 <div className="flex flex-wrap gap-x-12 gap-y-4">
                   <p className="text-sm md:text-base">
                     <span className="font-bold   text-[18px] mr-2">Mail:</span>
-                    <a href="mailto:info@creamz.com" className="text-[#] hover:text-black transition-colors">info@creamz.com</a>
+                    <a href={`mailto:${contactData.email}`} className="text-[#] hover:text-black transition-colors">{contactData.email}</a>
                   </p>
                   <p className="text-sm md:text-base">
                     <span className="font-bold   text-[18px] mr-2">Phone:</span>
-                    <a href="tel:0000123456789" className="text-[#] hover:text-black transition-colors">0000 - 123 - 456789</a>
+                    <a href={`tel:${contactData.phone.replace(/\s+/g, '')}`} className="text-[#] hover:text-black transition-colors">{contactData.phone}</a>
                   </p>
                 </div>
               </div>
@@ -68,15 +73,18 @@ export default function ContactPage() {
               <div className="mt-12">
                 <p className="font-bold   text-[18px] text-[#4B4036] mb-6">Social Media :</p>
                 <div className="flex gap-4">
-                  <a href="#" className="w-10 h-10 rounded-full bg-[#4B4036] flex items-center justify-center text-white hover:bg-black transition-all">
-                    <Linkedin size={18} fill="currentColor" />
-                  </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-[#4B4036] flex items-center justify-center text-white hover:bg-black transition-all">
-                    <Facebook size={18} fill="currentColor" />
-                  </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-[#4B4036] flex items-center justify-center text-white hover:bg-black transition-all">
-                    <Instagram size={18} />
-                  </a>
+                  {contactData.socials.map((social, idx) => {
+                    const Icon = iconMap[social.icon];
+                    return (
+                      <a 
+                        key={idx}
+                        href={social.href} 
+                        className="w-10 h-10 rounded-full bg-[#4B4036] flex items-center justify-center text-white hover:bg-black transition-all"
+                      >
+                        {Icon && <Icon size={18} {...(social.icon !== 'Instagram' ? { fill: "currentColor" } : {})} />}
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -130,8 +138,6 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }

@@ -1,17 +1,47 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
 import { products } from "@/public/datas/products";
 import ProductCard from "@/app/components/ProductCard";
 
 const ITEMS_PER_PAGE = 12;
 
-export default function ShopPage() {
+function ShopContent() {
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get("category");
+
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedCategory]);
+
+  useEffect(() => {
+    if (categoryParam) {
+      // Find the actual category name that matches the slug
+      // Products have category as "Lip Gloss", slug might be "lip-gloss"
+      const foundCategory = products.find(
+        (p) => p.category.toLowerCase().replace(/\s+/g, '-') === categoryParam.toLowerCase()
+      )?.category;
+      
+      if (foundCategory) {
+        setSelectedCategory(foundCategory);
+      } else {
+        // Fallback: check if categoryParam directly matches any category name (case insensitive)
+        const directMatch = products.find(
+          (p) => p.category.toLowerCase() === categoryParam.toLowerCase()
+        )?.category;
+        if (directMatch) {
+          setSelectedCategory(directMatch);
+        }
+      }
+    }
+  }, [categoryParam]);
 
   // Derived data
   const categories = Array.from(new Set(products.map((p) => p.category)));
@@ -160,5 +190,13 @@ export default function ShopPage() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function ShopPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ShopContent />
+    </Suspense>
   );
 }

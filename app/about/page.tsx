@@ -149,14 +149,7 @@ export default function AboutPage() {
                 )}
               </div>
               
-              {/* Decorative Floating Leaves (Optional assets) */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 opacity-20 hidden md:block rotate-45">
-                 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 90Q50 50 90 10" stroke="#4B4036" strokeWidth="0.5"/>
-                    <circle cx="90" cy="10" r="2" fill="#4B4036"/>
-                    <circle cx="70" cy="30" r="4" fill="#B2A69B" fillOpacity="0.5"/>
-                </svg>
-              </div>
+              
             </div>
 
           </div>

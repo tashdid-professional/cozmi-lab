@@ -113,3 +113,15 @@ export const footerData = {
     "https://picsum.photos/600/600?random=6",
   ]
 };
+
+export const contactData = {
+  address: "58 A, East Madison Street, Baltimore, MD, USA 4508",
+  email: "info@creamz.com",
+  phone: "0000 - 123 - 456789",
+  socials: [
+    { name: "Linkedin", href: "#", icon: "Linkedin" },
+    { name: "Facebook", href: "#", icon: "Facebook" },
+    { name: "Instagram", href: "#", icon: "Instagram" },
+  ],
+  description: "Nulla facilisi morbi tempus iaculis. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Lectus nulla at volutpat diam ut venenatis. Odio aenean sed adipiscing diam donec adipiscing tristique risus nec. Cras adipiscing enim eu turpis egestas pretium. Tristique et egestas quis ipsum. Massa vitae tortor condimentum lacinia. Magna fringilla urna porttitor rhonc."
+};
