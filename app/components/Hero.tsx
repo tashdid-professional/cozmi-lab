@@ -6,6 +6,7 @@ import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { heroSlides } from "@/public/datas/homepage";
+import SpinningText from "./SpinningText";
 
 export const Hero = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
@@ -30,7 +31,7 @@ export const Hero = () => {
   );
 
   return (
-    <section className="bg-[#F3F3F3] overflow-hidden relative min-h-[820px] lg:h-[90vh] flex items-center lg:pt-26 pt-10">
+    <section className="bg-[#F3F3F3] relative min-h-[820px] lg:h-[90vh] flex items-center lg:pt-26 pt-10 overflow-hidden lg:overflow-visible">
       <div className="overflow-hidden w-full h-full" ref={emblaRef}>
         <div className="flex h-full">
           {heroSlides.map((slide, index) => (
@@ -122,6 +123,14 @@ export const Hero = () => {
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
+      </div>
+
+      {/* Spinning Sticker */}
+      <div className="absolute bottom-0 left-[10%] lg:left-[15%] translate-y-1/2 z-40 pointer-events-none">
+        <SpinningText 
+          text="Nurturing Beauty. Enhancing Natural Wellness."
+          image="/images/tree-1.webp" 
+        />
       </div>
     </section>
   );

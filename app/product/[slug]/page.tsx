@@ -71,7 +71,7 @@ export default function ProductDetailsPage() {
           </div>
         </div>
 
-      <div className="container  pb-16 md:pb-20 pt-10 lg:px-12" >
+      <div className="container  pb-16 md:pb-20 pt-10 lg:px-12 px-4" >
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           
@@ -136,8 +136,8 @@ export default function ProductDetailsPage() {
                   <span className="">৳ </span>{product.oldPrice.toFixed(2)}
                 </span>
               )}
-              <span className=" text-[#4b4036] text-lg md:text-xl lg:text-[36px]  font-cormorant">
-                <span className=" ">৳ </span>{product.price.toFixed(2)}
+              <span className=" text-[#4b4036] text-2xl md:text-xl lg:text-[36px]  font-cormorant">
+                <span className="text-sm">৳ </span>{product.price.toFixed(2)}
               </span>
             </div>
               <div className="text-[18px] text-[#4b4036] mb-6">

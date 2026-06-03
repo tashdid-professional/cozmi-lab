@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Search } from "lucide-react";
+import { Search, Filter, X } from "lucide-react";
 import { products } from "@/public/datas/products";
 import ProductCard from "@/app/components/ProductCard";
 
@@ -16,6 +16,7 @@ function ShopContent() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -85,10 +86,25 @@ function ShopContent() {
         </div>
 
         {/* Content Section */}
-        <div className="container mx-auto px-4 py-16 md:py-24">
+        <div className="container mx-auto px-4 py-8 md:py-24">
           <div className="flex flex-col lg:flex-row gap-12">
+            
+            {/* Mobile Filter Button - Sticky */}
+            <div className="lg:hidden  top-[70px] z-30 bg-white py-4 mb-6 border-b border-neutral-100 flex justify-between items-center">
+              <button 
+                onClick={() => setIsSidebarOpen(true)}
+                className="flex items-center gap-2 text-[12px] font-lato tracking-[0.2em] uppercase font-bold text-custom"
+              >
+                <Filter className="w-4 h-4" />
+                Filter & Search
+              </button>
+              <span className="text-[11px] font-lato text-custom/60 uppercase tracking-widest">
+                {filteredProducts.length} Products
+              </span>
+            </div>
+
             {/* Main Products Grid */}
-            <div className="lg:w-[70%]">
+            <div className="lg:w-[70%] order-2 lg:order-1">
               {currentProducts.length > 0 ? (
                 <>
                   <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4">
@@ -134,58 +150,89 @@ function ShopContent() {
               )}
             </div>
 
-            {/* Sidebar */}
-            <aside className="lg:w-[30%] space-y-12">
-              {/* Search Widget */}
-              <div className="space-y-6">
-                <h3 className="text-[36px] font-cormorant italic text-[#4B4036]">
-                  Search
+            {/* Sidebar / Filters */}
+            <aside 
+              className={`
+                fixed inset-0 z-[100] bg-white transform transition-transform duration-500 lg:static lg:block lg:w-[30%] lg:translate-x-0 lg:z-auto
+                ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+                order-1 lg:order-2
+              `}
+            >
+              {/* Mobile Header for Sidebar */}
+              <div className="lg:hidden flex justify-between items-center p-6 border-b border-neutral-100">
+                <h3 className="text-[24px] font-cormorant italic text-[#4B4036]">
+                  Filters
                 </h3>
-                <div className="relative group">
-                  <input
-                    type="text"
-                    placeholder="SEARCH PRODUCTS..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full border-b border-neutral-200 py-3 pr-10 text-[14px] font-lato tracking-[0.2em] outline-none focus:border-custom transition-colors"
-                  />
-                  <Search className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[#4B4036]/40 group-focus-within:text-custom transition-colors cursor-pointer" />
-                </div>
+                <button onClick={() => setIsSidebarOpen(false)} className="p-2">
+                  <X className="w-6 h-6 text-custom" />
+                </button>
               </div>
 
-              {/* Categories Widget */}
-              <div className="space-y-6">
-                <h3 className="text-[36px] font-cormorant italic text-[#4B4036]">
-                  Product categories
-                </h3>
-                <ul className="space-y-4">
-                  <li>
-                    <button
-                      onClick={() => setSelectedCategory(null)}
-                      className={`text-[14px] font-lato tracking-[0.2em] uppercase transition-colors hover:text-custom w-full text-left ${
-                        selectedCategory === null ? "text-custom font-bold" : "text-[#4B4036]/60"
-                      }`}
-                    >
-                      All products ({products.length})
-                    </button>
-                  </li>
-                  {categoryCounts.map((cat) => (
-                    <li key={cat.name}>
+              <div className="h-full overflow-y-auto lg:overflow-visible p-8 lg:p-0 space-y-12 pb-32 lg:pb-0">
+                {/* Search Widget */}
+                <div className="space-y-6">
+                  <h3 className="text-[36px] font-cormorant italic text-[#4B4036]">
+                    Search
+                  </h3>
+                  <div className="relative group">
+                    <input
+                      type="text"
+                      placeholder="SEARCH PRODUCTS..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      onKeyDown={(e) => e.key === 'Enter' && setIsSidebarOpen(false)}
+                      className="w-full border-b border-neutral-200 py-3 pr-10 text-[14px] font-lato tracking-[0.2em] outline-none focus:border-custom transition-colors"
+                    />
+                    <Search className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[#4B4036]/40 group-focus-within:text-custom transition-colors cursor-pointer" />
+                  </div>
+                </div>
+
+                {/* Categories Widget */}
+                <div className="space-y-6">
+                  <h3 className="text-[36px] font-cormorant italic text-[#4B4036]">
+                    Product categories
+                  </h3>
+                  <ul className="space-y-4">
+                    <li>
                       <button
-                        onClick={() => setSelectedCategory(cat.name)}
+                        onClick={() => {
+                          setSelectedCategory(null);
+                          setIsSidebarOpen(false);
+                        }}
                         className={`text-[14px] font-lato tracking-[0.2em] uppercase transition-colors hover:text-custom w-full text-left ${
-                          selectedCategory === cat.name ? "text-custom font-bold" : "text-[#4B4036]/60"
+                          selectedCategory === null ? "text-custom font-bold" : "text-[#4B4036]/60"
                         }`}
                       >
-                        {cat.name} ({cat.count})
+                        All products ({products.length})
                       </button>
                     </li>
-                  ))}
-                </ul>
+                    {categoryCounts.map((cat) => (
+                      <li key={cat.name}>
+                        <button
+                          onClick={() => {
+                            setSelectedCategory(cat.name);
+                            setIsSidebarOpen(false);
+                          }}
+                          className={`text-[14px] font-lato tracking-[0.2em] uppercase transition-colors hover:text-custom w-full text-left ${
+                            selectedCategory === cat.name ? "text-custom font-bold" : "text-[#4B4036]/60"
+                          }`}
+                        >
+                          {cat.name} ({cat.count})
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-
-              {/* Optional: Filter by Colors/Tags could go here */}
             </aside>
+
+            {/* Mobile Overlay */}
+            {isSidebarOpen && (
+              <div 
+                className="fixed inset-0 bg-black/20 z-[90] lg:hidden"
+                onClick={() => setIsSidebarOpen(false)}
+              />
+            )}
           </div>
         </div>
       </main>
