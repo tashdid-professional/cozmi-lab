@@ -31,7 +31,7 @@ export const Hero = () => {
   );
 
   return (
-    <section className="bg-[#F3F3F3] relative min-h-[820px] lg:h-[90vh] flex items-center lg:pt-26 pt-10 overflow-hidden lg:overflow-visible">
+    <section className="bg-[#F3F3F3] relative min-h-[820px] lg:h-[90vh] flex items-center lg:pt-26 pt-10  lg:overflow-visible">
       <div className="overflow-hidden w-full h-full" ref={emblaRef}>
         <div className="flex h-full">
           {heroSlides.map((slide, index) => (
@@ -77,7 +77,7 @@ export const Hero = () => {
                       </h1>
                     </div>
                     
-                    <p className={`font-lato text-[#4B4036]/70 text-[16px] md:text-[18px] leading-relaxed max-w-lg mx-auto lg:mx-0 transition-all duration-700 delay-500 font-medium ${selectedIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+                    <p className={`font-lato text-[#4B4036]/70 text-[16px] md:text-[18px] leading-relaxed max-w-lg mx-auto lg:mx-0 transition-all duration-700 delay-500 font-semibold${selectedIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
                       {slide.description}
                     </p>
 
@@ -98,7 +98,7 @@ export const Hero = () => {
                     <div className={`pt-4 md:pt-8 transition-all duration-700 delay-1000 ${selectedIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
                       <Link 
                         href={slide.buttonLink}
-                        className="inline-block bg-[#4B3C31] text-white px-10 md:px-14 py-4 md:py-6 text-[12px]  font-bold tracking-[0.2em] uppercase hover:bg-black transition-all duration-300"
+                        className="inline-block bg-[#4B3C31] text-white px-10 md:px-14 py-4 md:py-4 text-[12px]  font-bold tracking-[0.2em] uppercase hover:bg-black transition-all duration-300"
                       >
                         {slide.buttonText}
                       </Link>
@@ -126,7 +126,7 @@ export const Hero = () => {
       </div>
 
       {/* Spinning Sticker */}
-      <div className="absolute bottom-0 left-[10%] lg:left-[15%] translate-y-1/2 z-40 pointer-events-none">
+      <div className="absolute bottom-0 left-[30%] lg:left-[40%] translate-y-1/2 z-990 pointer-events-none">
         <SpinningText 
           text="Nurturing Beauty. Enhancing Natural Wellness."
           image="/images/tree-1.webp" 

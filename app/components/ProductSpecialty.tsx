@@ -12,7 +12,7 @@ const iconMap = {
 
 export const ProductSpecialty = () => {
   return (
-    <section className="py-20 md:py-32 bg-[#EFE0D1] overflow-hidden">
+    <section className="py-20 md:py-32 bg-[#EFE0D1] overflow-hidden ">
       <div className="container mx-auto px-4 relative">
         {/* Section Header */}
         <div className="text-center mb-16 relative z-10">
