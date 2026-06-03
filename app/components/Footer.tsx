@@ -58,7 +58,7 @@ export function Footer() {
           {/* Column 2: Explore Links (4/12) */}
           <div className="lg:col-span-4 lg:pt-2">
             <h3 className="text-[26px] font-cormorant italic mb-10 tracking-wide">Explore</h3>
-            <div className="grid grid-cols-2 gap-x-12 gap-y-5">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-3">
               {[...footerData.exploreLinks, ...footerData.servicesLinks].map((link) => (
                 <Link key={link.name} href={link.href} className="text-gray-300 font-lato text-[14px] flex items-center group transition-colors">
                   <div className="mr-3 transform transition-transform group-hover:rotate-90">
@@ -66,7 +66,7 @@ export function Footer() {
                       <path d="M5 0L6.12257 3.87743L10 5L6.12257 6.12257L5 10L3.87743 6.12257L0 5L3.87743 3.87743L5 0Z" fill="white" className="opacity-40 group-hover:opacity-100 transition-opacity" />
                     </svg>
                   </div>
-                  <span className="text-[#b2a69b] hover:text-white transition-colors  tracking-[0.2em]  text-[16px]">{link.name}</span>
+                  <span className="text-[#b2a69b] hover:text-white transition-colors   lg:text-lg text-[16px]">{link.name}</span>
                 </Link>
               ))}
             </div>
@@ -114,7 +114,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-center items-center gap-6 text-[11px] font-lato tracking-[0.1em] text-white ">
+        <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-center items-center gap-6 text-[14px] font-lato tracking-[0.1em] text-white ">
           <p>© 2026 Cozmi Lab | Powered by <a href="https://www.thebigdogdigital.com/" target="_blank" className="text-white font-bold transition-colors">BigDog Digital</a>.</p>
         
         </div>

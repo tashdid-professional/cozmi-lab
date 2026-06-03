@@ -27,7 +27,7 @@ export function Testimonials() {
         {/* Right: Content */}
         <div className="w-full md:w-[60%] relative">
           {/* Section Heading */}
-          <h2 className="headline mb-8 text-left">Testimonials</h2>
+          <h2 className="headline mb-8 text-left font-medium">Testimonials</h2>
 
           {/* Testimonial Content */}
           <div className="lg:space-y-6 space-y-2 relative z-10">

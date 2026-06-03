@@ -8,7 +8,7 @@
 }
 
 @utility headline {
-  @apply font-cormorant text-custom italic text-[48px];
+  @apply font-cormorant text-custom italic text-[48px] font-medium;
 }
 
 @utility subheadline {

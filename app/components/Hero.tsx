@@ -31,19 +31,19 @@ export const Hero = () => {
   );
 
   return (
-    <section className="bg-[#F3F3F3] relative min-h-[820px] lg:h-[90vh] flex items-center lg:pt-26 pt-10 lg:pb-0 pb-16  lg:overflow-visible">
+    <section className="bg-[#F3F3F3] relative min-h-[820px] lg:h-[90vh] flex items-end lg:pt-26 pt-10 lg:pb-0 pb-20 md:pb-36 lg:overflow-visible">
       <div className="overflow-hidden w-full h-full" ref={emblaRef}>
         <div className="flex h-full">
           {heroSlides.map((slide, index) => (
-            <div key={index} className="flex-[0_0_100%] min-w-0 relative flex items-center h-full">
-              <div className="container mx-auto px-6 py-12 md:py-24">
+            <div key={index} className="flex-[0_0_100%] min-w-0 relative flex items-end h-full">
+              <div className="container mx-auto px-6 pt-12 md:pt-24 pb-0">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
                   
                   {/* Left Side: Image with Arch and Tree */}
                   <div className={`relative flex justify-center lg:justify-end order-2 lg:order-1 transition-all duration-1000 ${selectedIndex === index ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
                     <div className="relative w-[280px] h-[400px] sm:w-[350px] sm:h-[500px] md:w-[450px] md:h-[650px] lg:w-[500px] lg:h-[700px]">
                       {/* Arch Background */}
-                      <div className="absolute bottom-0 left-0 w-full h-[85%] bg-[#F2D1B3]/50 rounded-t-full z-0 translate-y-4" />
+                      <div className="absolute bottom-0 left-0 w-full h-[85%] bg-[#E8D1BB] rounded-t-full z-0 " />
                       
                       {/* Girl Image */}
                       <div className="absolute inset-0 z-10 overflow-hidden flex items-end">
@@ -58,7 +58,7 @@ export const Hero = () => {
                       </div>
 
                       {/* Fixed Tree Overlay */}
-                      <div className={`absolute bottom-0 -left-16 w-[180px] h-[270px] sm:w-[250px] sm:h-[350px] md:w-[380px] md:h-[550px] z-20 pointer-events-none overflow-visible transition-all duration-[1000ms] delay-500 ${selectedIndex === index ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-90 blur-sm"}`}>
+                      <div className={`absolute bottom-0 lg:-left-36 -left-16 md:-left-26 w-[180px] h-[200px] sm:w-[250px] sm:h-[350px] md:w-[380px] md:h-[450px] z-20 pointer-events-none overflow-visible transition-all duration-[1000ms] delay-500 ${selectedIndex === index ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-90 blur-sm"}`}>
                         <Image
                           src="/images/tree-1.webp"
                           alt="Decorative tree branch"
@@ -70,19 +70,19 @@ export const Hero = () => {
                   </div>
 
                   {/* Right Side: Content */}
-                  <div className="space-y-6 md:space-y-10 max-w-xl order-2 text-center lg:text-left">
+                  <div className="space-y-6 md:space-y-6 max-w-xl order-2 text-center lg:text-left md:mx-auto lg:mx-0">
                     <div className={`space-y-2 transition-all duration-700 delay-300 ${selectedIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                      <h1 className="font-cormorant text-[48px] sm:text-[60px] md:text-[60px] lg:text-[74px] leading-[1.1] text-[#4B4036] normal-case">
+                      <h1 className="font-cormorant text-[48px] sm:text-[60px] md:text-[60px] lg:text-[74px] leading-[1.1] text-[#4B4036] normal-case font-medium">
                         {slide.title}
                       </h1>
                     </div>
                     
-                    <p className={`font-lato text-[#4B4036]/70 text-[16px] md:text-[18px] leading-relaxed max-w-lg mx-auto lg:mx-0 transition-all duration-700 delay-500 font-semibold${selectedIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+                    <p className={`font-lato text-[#4B4036] text-[16px] md:text-[18px] leading-relaxed max-w-lg mx-auto lg:mx-0 transition-all duration-700 delay-500 font-semibold${selectedIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
                       {slide.description}
                     </p>
 
                     {/* Thumbnails row */}
-                    <div className={`hidden md:flex justify-center lg:justify-start gap-4 md:gap-6 pt-4 transition-all duration-700 delay-700 ${selectedIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+                    <div className={`hidden md:flex justify-center lg:justify-start gap-4 md:gap-6 pt-8 transition-all duration-700 delay-700 ${selectedIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
                       {slide.thumbnails.map((thumb, i) => (
                         <div key={i} className="relative w-24 h-16 md:w-46 md:h-20 group cursor-pointer overflow-hidden rounded-r-[40px]  ">
                           <Image
@@ -126,7 +126,7 @@ export const Hero = () => {
       </div>
 
       {/* Spinning Sticker */}
-      <div className="absolute bottom-0 left-[30%] lg:left-[40%] translate-y-1/2 z-990 pointer-events-none">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-990 pointer-events-none">
         <SpinningText 
           text="Nurturing Beauty. Enhancing Natural Wellness."
           image="/images/tree-1.webp" 

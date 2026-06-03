@@ -37,7 +37,7 @@ export default function ContactPage() {
             {/* Left Column: Info */}
             <div>
               <div className="relative mb-8 md:mb-10">
-                <h2 className="text-4xl md:text-[48px] font-cormorant italic text-[#4B4036] relative z-10">
+                <h2 className="text-4xl md:text-[48px] font-cormorant italic text-[#4B4036] relative z-10 font-medium">
                   Contact Us
                 </h2>
                

@@ -37,10 +37,10 @@ export default function AboutPage() {
             {/* Left: Content */}
             <div className="order-2 lg:order-1">
               <div className="relative mb-6">
-                <h2 className="text-4xl md:text-[48px] leading-[1.1] font-cormorant italic text-[#4B4036] mb-8 max-w-md">
+                <h2 className="text-4xl md:text-[48px] leading-[1.1] font-cormorant italic text-[#4B4036] mb-8 max-w-md font-medium">
                   {aboutData.title}
                 </h2>
-                <span className="text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#4B4036]/60 font-lato block mb-4">
+                <span className="text-[11px] md:text-[14px] tracking-[3.25px] uppercase text-[#4B4036]/60 font-lato block mb-4 font-medium">
                   {aboutData.subtitle}
                 </span>
                 {/* Decorative leaf element */}

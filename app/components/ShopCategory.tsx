@@ -11,10 +11,16 @@ export const ShopCategory = () => {
       <div className="container mx-auto px-4 relative">
         {/* Section Header */}
         <div className="text-center mb-16 relative z-10">
-          <h2 className="text-4xl md:text-5xl font-cormorant italic text-[#4B4036] mb-4">
+          <h2 className="text-4xl md:text-5xl font-cormorant italic text-[#4B4036] mb-4 font-medium">
             Shop Category
           </h2>
-          <p className="text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#4B4036]/60 font-lato">
+          {/* Decorative flourish background */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.05] pointer-events-none">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full stroke-black stroke-1">
+              <path d="M50 10 C50 10 30 40 50 60 M50 10 C50 10 70 40 50 60 M50 30 C50 30 20 50 50 70 M50 30 C50 30 80 50 50 70" />
+            </svg>
+          </div>
+          <p className="text-[11px] md:text-[14px] tracking-[3.25px] uppercase text-[#b2a69b]  font-medium">
             POPULAR CATEGORIES
           </p>
           
@@ -51,7 +57,7 @@ export const ShopCategory = () => {
               <h3 className="text-2xl md:text-[36px] font-cormorant italic text-[#4B4036] mb-1 group-hover:text-black transition-colors">
                 {category.name}
               </h3>
-              <p className="text-[10px] md:text-[14px] tracking-widest text-neutral-400 uppercase font-lato">
+              <p className="text-[10px] md:text-[14px] tracking-widest text-[#b2a69b] uppercase font-lato">
                 ({category.itemCount} ITEMS)
               </p>
             </Link>

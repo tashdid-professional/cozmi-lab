@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { productSpecialties } from "@/public/datas/homepage";
-import { Beaker, Rabbit, Ban } from "lucide-react";
 
 const iconMap = {
-  rabbit: Rabbit,
-  beaker: Beaker,
-  ban: Ban,
+  rabbit: "/images/1.svg",
+  beaker: "/images/2.svg",
+  ban: "/images/3.svg",
 };
 
 export const ProductSpecialty = () => {
@@ -16,10 +16,10 @@ export const ProductSpecialty = () => {
       <div className="container mx-auto px-4 relative">
         {/* Section Header */}
         <div className="text-center lg:mb-16 mb-8 relative z-10 lg:mt-0 mt-8">
-          <h2 className="text-4xl md:text-5xl font-cormorant italic text-[#4B4036] mb-4">
+          <h2 className="text-4xl md:text-5xl font-cormorant italic text-[#4B4036] mb-4 font-medium">
             Our Product Specialty
           </h2>
-          <p className="text-[11px] md:text-[13px] tracking-[0.3em] uppercase text-[#4B4036]/60 font-lato">
+          <p className="text-[11px] md:text-[14px] tracking-[3.25px] uppercase text-[#b2a69b]  font-medium">
             {productSpecialties.subtitle}
           </p>
         </div>
@@ -27,11 +27,17 @@ export const ProductSpecialty = () => {
         {/* Icons Grid */}
         <div className="flex flex-wrap justify-center gap-12 md:gap-24 mb-10">
           {productSpecialties.icons.map((specialty, idx) => {
-            const IconComponent = iconMap[specialty.icon as keyof typeof iconMap] || Beaker;
+            const iconSrc = iconMap[specialty.icon as keyof typeof iconMap] || "/images/1.svg";
             return (
               <div key={idx} className="flex flex-col items-center group">
-                <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-white flex items-center justify-center mb-6 shadow-sm group-hover:shadow-md transition-all duration-300">
-                  <IconComponent className="text-[#4B4036]/70 w-8 h-8 md:w-10 md:h-10 transition-transform group-hover:scale-110" strokeWidth={1} />
+                <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-[#F3F3F3] flex items-center justify-center mb-6 shadow-sm group-hover:shadow-md transition-all duration-300">
+                  <Image 
+                    src={iconSrc} 
+                    alt={specialty.name} 
+                    width={40} 
+                    height={40} 
+                    className="opacity-70 transition-transform group-hover:scale-110"
+                  />
                 </div>
                 <h3 className="text-xl md:text-2xl font-cormorant italic text-[#4B4036]">
                   {specialty.name}

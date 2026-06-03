@@ -200,7 +200,7 @@ function ShopContent() {
                           setIsSidebarOpen(false);
                         }}
                         className={`text-[14px] font-lato tracking-[0.2em] uppercase transition-colors hover:text-custom w-full text-left ${
-                          selectedCategory === null ? "text-custom font-bold" : "text-[#4B4036]/60"
+                          selectedCategory === null ? "text-custom " : "text-[#4B4036]/60"
                         }`}
                       >
                         All products ({products.length})

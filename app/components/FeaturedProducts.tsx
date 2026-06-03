@@ -18,7 +18,7 @@ export function FeaturedProducts() {
       {/* Section Header */}
       <div className="text-center mb-20 relative">
         <div className="relative inline-block">
-          <h2 className="headline mb-2 text-[52px] leading-tight relative z-10">Beauty & Grooming</h2>
+          <h2 className="headline mb-2 text-[52px] leading-tight relative z-10 font-medium">Beauty & Grooming</h2>
           {/* Decorative flourish background */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.05] pointer-events-none">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full stroke-black stroke-1">
@@ -26,7 +26,7 @@ export function FeaturedProducts() {
             </svg>
           </div>
         </div>
-        <p className="subheadline tracking-[0.3em] text-[13px]">Trending Cosmetics</p>
+        <p className="subheadline tracking-[3.25px] text-[14px] font-medium">Trending Cosmetics</p>
       </div>
 
       {/* Products Grid / Slider Container */}
