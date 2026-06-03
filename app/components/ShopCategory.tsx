@@ -28,7 +28,7 @@ export const ShopCategory = () => {
         </div>
 
         {/* Categories Grid - Adjusted for 3 up / 2 down layout from image */}
-        <div className="flex flex-wrap justify-center gap-12 md:gap-x-56 max-w-6xl mx-auto">
+        <div className="lg:flex flex-wrap justify-center gap-12 md:gap-x-56 max-w-6xl mx-auto grid grid-cols-2 ">
           {shopCategories.map((category, idx) => (
             <Link 
               key={idx} 
@@ -59,18 +59,11 @@ export const ShopCategory = () => {
         </div>
 
         {/* Floating Decorative Flowers (Absolute Positioned) */}
-        <div className="absolute -bottom-10 -left-10 w-48 h-48 opacity-20 pointer-events-none rotate-12 hidden md:block">
-           <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 90Q30 40 50 10" stroke="#4B4036" strokeWidth="0.5"/>
-              <circle cx="50" cy="10" r="2" fill="#4B4036"/>
-              <path d="M10 90Q50 70 90 80" stroke="#4B4036" strokeWidth="0.5"/>
-           </svg>
+        <div className="absolute bottom-0 left-10 w-58 h-58  pointer-events-none rotate-20 hidden md:block">
+          <Image src={"/images/tree-1.webp"} width={192} height={192} alt="Decorative Tree" />
         </div>
-        <div className="absolute top-0 -right-10 w-48 h-48 opacity-20 pointer-events-none -rotate-12 hidden md:block">
-           <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M90 10Q70 60 50 90" stroke="#4B4036" strokeWidth="0.5"/>
-              <path d="M90 10Q50 30 10 20" stroke="#4B4036" strokeWidth="0.5"/>
-           </svg>
+        <div className="absolute -bottom-10 right-10 w-58 h-58  pointer-events-none -rotate-20 hidden md:block">
+          <Image src={"/images/tree-2.webp"} width={192} height={192} alt="Decorative Tree" />
         </div>
       </div>
     </section>

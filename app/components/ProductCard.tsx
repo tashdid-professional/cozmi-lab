@@ -82,11 +82,11 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           {/* Content */}
           <div className="flex flex-col flex-grow text-center space-y-3 bg-white py-6">
-            <h3 className="font-cormorant italic text-[24px] text-[#4B4036] leading-tight font-medium hover:text-[#b2a69b] transition-colors">
+            <h3 className="font-cormorant italic lg:text-[24px] text-[18px]  text-[#4B4036] leading-tight font-medium hover:text-[#b2a69b] transition-colors">
               {product.name}
             </h3>
             
-            <div className="flex items-center justify-center gap-3 font-lato text-[14px] mt-auto font-semibold">
+            <div className="flex items-center justify-center gap-3 font-lato lg:text-[14px] text-[12px] mt-auto font-semibold">
               {product.oldPrice && (
                 <span className="text-[#b2a69b] line-through decoration-1">৳ {product.oldPrice.toFixed(2)}</span>
               )}

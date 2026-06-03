@@ -43,7 +43,7 @@ export const ProductSpecialty = () => {
 
         {/* Text Area */}
         <div className=" mx-auto text-center relative ">
-          <p className="text-2xl md:text-[43px] font-cormorant text-[#4B4036] leading-[1.6]">
+          <p className="text-2xl italic md:text-[43px] font-cormorant text-[#4B4036] leading-[1.6]">
             {productSpecialties.description}
           </p>
         </div>

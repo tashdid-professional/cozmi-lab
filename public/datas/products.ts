@@ -13,6 +13,7 @@ export interface Product {
   image: string;
   badge?: "Sale" | "New";
   description: string;
+  shortdescription?: string;
   slug: string;
   tags: string[];
   gallery: string[];
@@ -33,6 +34,7 @@ export const products: Product[] = [
     image: "https://picsum.photos/800/1000?random=1",
     badge: "Sale",
     description: "An dico accommodare ius, porro mnesarchum pro in. Cetero fierent urbanitas eam id, sed movet voluptua ut. Eu agam malorum nec. Eu has vide putent, dico option nominati no eam. Ea erant impetus consequuntur eos, velit congue vidisse eos ne.",
+    shortdescription: "A vibrant eyeshadow with a unique film-like finish.lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     slug: "film-eyeshadow",
     tags: ["Cosmetic", "Make Up"],
     gallery: ["https://picsum.photos/800/1000?random=1", "https://picsum.photos/800/1000?random=101", "https://picsum.photos/800/1000?random=201"],
@@ -65,6 +67,7 @@ export const products: Product[] = [
     price: 25.0,
     image: "https://picsum.photos/800/1000?random=4",
     description: "An dico accommodare ius, porro mnesarchum pro in. Cetero fierent urbanitas eam id, sed movet voluptua ut. Eu agam malorum nec. Eu has vide putent, dico option nominati no eam.",
+    shortdescription: "A vibrant palette with a unique film-like finish.",
     slug: "wild-palettes",
     tags: ["Cosmetic", "Palettes"],
     gallery: ["https://picsum.photos/800/1000?random=4", "https://picsum.photos/800/1000?random=104", "https://picsum.photos/800/1000?random=204"],
@@ -83,7 +86,9 @@ export const products: Product[] = [
     category: "Lip Gloss",
     price: 35.0,
     image: "https://picsum.photos/800/1000?random=6",
+    
     description: "An dico accommodare ius, porro mnesarchum pro in. Cetero fierent urbanitas eam id, sed movet voluptua ut. Eu agam malorum nec.",
+    shortdescription: "A romantic rose shade perfect for any occasion.",
     slug: "rose-safari",
     tags: ["Classic", "Lipstick"],
     gallery: ["https://picsum.photos/800/1000?random=6", "https://picsum.photos/800/1000?random=106", "https://picsum.photos/800/1000?random=206"],
@@ -99,6 +104,7 @@ export const products: Product[] = [
     image: "https://picsum.photos/800/1000?random=7",
     badge: "New",
     description: "An dico accommodare ius, porro mnesarchum pro in. Cetero fierent urbanitas eam id, sed movet voluptua ut.",
+    shortdescription: "A vibrant shade with a unique film-like finish.",
     slug: "summer-mirage",
     tags: ["Summer", "Limited"],
     gallery: ["https://picsum.photos/800/1000?random=7", "https://picsum.photos/800/1000?random=107", "https://picsum.photos/800/1000?random=207"],
@@ -114,6 +120,7 @@ export const products: Product[] = [
     image: "https://picsum.photos/800/1000?random=8",
     badge: "New",
     description: "An dico accommodare ius, porro mnesarchum pro in. Cetero fierent urbanitas eam id, sed movet voluptua ut.",
+    shortdescription: "A vibrant shade with a unique film-like finish.",
     slug: "summer-drama",
     tags: ["Drama", "Intense"],
     gallery: ["https://picsum.photos/800/1000?random=8", "https://picsum.photos/800/1000?random=108", "https://picsum.photos/800/1000?random=208"],
@@ -129,6 +136,7 @@ export const products: Product[] = [
     image: "https://picsum.photos/800/1000?random=9",
     badge: "Sale",
     description: "An dico accommodare ius, porro mnesarchum pro in. Cetero fierent urbanitas eam id, sed movet voluptua ut.",
+    shortdescription: "A vibrant shade with a unique film-like finish.",
     slug: "velvet-matte",
     tags: ["Matte", "Velvet"],
     gallery: ["https://picsum.photos/800/1000?random=9", "https://picsum.photos/800/1000?random=109", "https://picsum.photos/800/1000?random=209"],
@@ -149,6 +157,7 @@ export const products: Product[] = [
     image: "https://picsum.photos/800/1000?random=11",
     badge: "New",
     description: "An dico accommodare ius, porro mnesarchum pro in. Cetero fierent urbanitas eam id, sed movet voluptua ut.",
+    shortdescription: "A radiant serum that enhances your skin's natural glow.",
     slug: "glow-serum",
     tags: ["Serum", "Glow"],
     gallery: ["https://picsum.photos/800/1000?random=11", "https://picsum.photos/800/1000?random=111", "https://picsum.photos/800/1000?random=211"],
@@ -163,6 +172,7 @@ export const products: Product[] = [
     price: 38.0,
     image: "https://picsum.photos/800/1000?random=12",
     description: "An dico accommodare ius, porro mnesarchum pro in. Cetero fierent urbanitas eam id, sed movet voluptua ut.",
+    shortdescription: "A silky foundation that provides a flawless finish.",
     slug: "silk-foundation",
     tags: ["Foundation", "Silk"],
     gallery: ["https://picsum.photos/800/1000?random=12", "https://picsum.photos/800/1000?random=112", "https://picsum.photos/800/1000?random=212"],

@@ -127,19 +127,22 @@ export default function ProductDetailsPage() {
           {/* Right: Product Info */}
           <div className="lg:col-span-5 flex flex-col justify-start sticky top-24">
 
-             <div className="flex items-center gap-4 mb-4 md:mb-4 ">
-              {product.oldPrice && (
-                <span className=" text-[#999] line-through text-lg md:text-xl font-semibold">
-                  <span className="font-serif ">৳ </span>{product.oldPrice.toFixed(2)}
-                </span>
-              )}
-              <span className=" text-black text-lg md:text-xl font-semibold ">
-                <span className="font-serif ">৳ </span>{product.price.toFixed(2)}
-              </span>
-            </div>
-            <h1 className="text-2xl md:text-[34px] font-semibold tracking-normal text-black mb-6 ">
+            <h1 className="text-2xl md:text-[34px] lg:text-[68px] font-semibold italic font-cormorant tracking-normal text-[#4b4036] mb-6 ">
               {product.name}
             </h1>
+             <div className="flex items-center gap-4 mb-4 md:mb-4 ">
+              {product.oldPrice && (
+                <span className=" text-[#999] text-lg md:text-xl lg:text-[36px]  font-cormorant line-through"> 
+                  <span className="">৳ </span>{product.oldPrice.toFixed(2)}
+                </span>
+              )}
+              <span className=" text-[#4b4036] text-lg md:text-xl lg:text-[36px]  font-cormorant">
+                <span className=" ">৳ </span>{product.price.toFixed(2)}
+              </span>
+            </div>
+              <div className="text-[18px] text-[#4b4036] mb-6">
+                {product.shortdescription}
+              </div>
             
            
 
