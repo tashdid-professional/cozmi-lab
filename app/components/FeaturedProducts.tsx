@@ -14,7 +14,7 @@ export function FeaturedProducts() {
   const visibleProducts = featured;
 
   return (
-    <section className="py-24 px-8 bg-[#FDF9F5]">
+    <section className="py-24 px-4 bg-[#FDF9F5]">
       {/* Section Header */}
       <div className="text-center mb-20 relative">
         <div className="relative inline-block">

@@ -70,7 +70,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
 
             {/* Quick View Button on Hover */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 z-20 pointer-events-none">
+            <div className="absolute inset-0 lg:flex hidden items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity duration-300 z-20 pointer-events-none">
               <button
                 onClick={openQuickView}
                 className="bg-[#4B4036] text-white px-10 py-3.5 text-[11px] font-lato font-bold tracking-[0.25em] uppercase shadow-xl hover:bg-black transition-all duration-300 pointer-events-auto"
@@ -144,7 +144,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 </div>
                 <div className="w-12 h-px bg-[#4B4036] mb-8" />
                 <p className="text-gray-600 text-sm leading-relaxed font-lato italic mb-8">
-                  {product.description || `Experience the luxury of our curated ${product.category.toLowerCase()} collection.`}
+                  {product.shortdescription}
                 </p>
               </div>
 
