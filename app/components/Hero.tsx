@@ -31,7 +31,7 @@ export const Hero = () => {
   );
 
   return (
-    <section className="bg-[#F3F3F3] relative min-h-[820px] lg:h-[90vh] flex items-center lg:pt-26 pt-10  lg:overflow-visible">
+    <section className="bg-[#F3F3F3] relative min-h-[820px] lg:h-[90vh] flex items-center lg:pt-26 pt-10 lg:pb-0 pb-16  lg:overflow-visible">
       <div className="overflow-hidden w-full h-full" ref={emblaRef}>
         <div className="flex h-full">
           {heroSlides.map((slide, index) => (

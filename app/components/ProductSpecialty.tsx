@@ -15,7 +15,7 @@ export const ProductSpecialty = () => {
     <section className="py-20 md:py-32 bg-[#EFE0D1] overflow-hidden ">
       <div className="container mx-auto px-4 relative">
         {/* Section Header */}
-        <div className="text-center mb-16 relative z-10">
+        <div className="text-center lg:mb-16 mb-8 relative z-10 lg:mt-0 mt-8">
           <h2 className="text-4xl md:text-5xl font-cormorant italic text-[#4B4036] mb-4">
             Our Product Specialty
           </h2>
@@ -25,7 +25,7 @@ export const ProductSpecialty = () => {
         </div>
 
         {/* Icons Grid */}
-        <div className="flex flex-wrap justify-center gap-12 md:gap-24 mb-24">
+        <div className="flex flex-wrap justify-center gap-12 md:gap-24 mb-10">
           {productSpecialties.icons.map((specialty, idx) => {
             const IconComponent = iconMap[specialty.icon as keyof typeof iconMap] || Beaker;
             return (

@@ -10,8 +10,7 @@ export function FeaturedProducts() {
   const itemsPerPage = 4;
   const numDots = Math.ceil(featured.length / itemsPerPage);
 
-  // For a simple slider, we'll show pages of 4 on desktop, 1 on mobile
-  // But to keep it simple and responsive as requested:
+ 
   const visibleProducts = featured;
 
   return (
@@ -32,7 +31,7 @@ export function FeaturedProducts() {
 
       {/* Products Grid / Slider Container */}
       <div className="max-w-[1200px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10 gap-4">
           {visibleProducts.slice(activeIndex * itemsPerPage, (activeIndex + 1) * itemsPerPage).map((product) => (
             <div key={product.id} className="h-full">
               <ProductCard product={product} />

@@ -40,13 +40,7 @@ export default function ContactPage() {
                 <h2 className="text-4xl md:text-[48px] font-cormorant italic text-[#4B4036] relative z-10">
                   Contact Us
                 </h2>
-                {/* Decorative Element Placeholder (like the leaf in the image) */}
-                <div className="absolute -top-6 -left-4 opacity-10 pointer-events-none">
-                  {/* You can replace this with an SVG or Image if you have the leaf asset */}
-                  <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 10C50 10 30 40 30 60C30 80 50 90 50 90C50 90 70 80 70 60C70 40 50 10Z" stroke="#4B4036" strokeWidth="1"/>
-                  </svg>
-                </div>
+               
               </div>
 
               <p className="text-[#] text-base md:text-[18px] leading-[1.8] mb-12 max-w-lg">

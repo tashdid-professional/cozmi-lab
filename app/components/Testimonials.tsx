@@ -30,8 +30,8 @@ export function Testimonials() {
           <h2 className="headline mb-8 text-left">Testimonials</h2>
 
           {/* Testimonial Content */}
-          <div className="space-y-6 relative z-10">
-            <p className="font-lato text-[18px] text-custom leading-relaxed max-w-[550px]">
+          <div className="lg:space-y-6 space-y-2 relative z-10">
+            <p className="font-lato text-[14px] lg:text-[18px] text-custom leading-relaxed max-w-[550px]">
               {testimonials[activeIndex].content}
             </p>
 
@@ -51,7 +51,7 @@ export function Testimonials() {
             </div>
 
             {/* Author */}
-            <div className="flex items-center gap-3 pt-4 font-cormorant italic text-[24px] text-custom font-bold">
+            <div className="flex items-center gap-3 lg:pt-4 font-cormorant italic text-[24px] text-custom font-bold">
                 {testimonials[activeIndex].name} 
                 <span className="subheadline text-[14px] not-italic align-middle flex items-center h-full pt-1.5  font-lato font-normal">— {testimonials[activeIndex].role}</span>
             </div>
@@ -72,7 +72,7 @@ export function Testimonials() {
           </div>
 
           {/* Decorative Quote Icon */}
-          <div className="absolute bottom-20 right-20 -translate-y-1/2 opacity-[0.3] pointer-events-none transform scale-[4]">
+          <div className="absolute lg:bottom-20 lg:right-20 right-0 -translate-y-1/2 opacity-[0.3] pointer-events-none transform scale-[4]">
              <Quote size={30} className="text-custom fill-custom" />
           </div>
         </div>
