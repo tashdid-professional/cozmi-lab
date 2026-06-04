@@ -37,7 +37,7 @@ export const termsConditions = {
 };
 
 export const oem = {
-  title: "OEM / Private Label",
+  title: "OEM",
   lastUpdated: "June 1, 2026",
   sections: [
     {
