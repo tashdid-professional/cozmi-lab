@@ -1,27 +1,33 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Search } from "lucide-react";
-import { blogs } from "@/public/datas/blogs";
+import { getBlogs } from "@/src/services/api";
+import type { Blog } from "@/src/types";
 
 const ITEMS_PER_PAGE = 6;
 
 export default function BlogPage() {
+  const [allBlogs, setAllBlogs] = useState<Blog[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
 
+  useEffect(() => {
+    getBlogs().then(setAllBlogs);
+  }, []);
+
   // Derived data
-  const categories = Array.from(new Set(blogs.map((b) => b.category)));
+  const categories = Array.from(new Set(allBlogs.map((b) => b.category)));
   const categoryCounts = categories.map((cat) => ({
     name: cat,
-    count: blogs.filter((b) => b.category === cat).length,
+    count: allBlogs.filter((b) => b.category === cat).length,
   }));
 
   // Filtering logic
-  const filteredBlogs = blogs.filter((blog) => {
+  const filteredBlogs = allBlogs.filter((blog) => {
     const matchesSearch = blog.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
@@ -183,7 +189,7 @@ export default function BlogPage() {
                           : "text-[#4B4036]/60"
                       }`}
                     >
-                      All Articles ({blogs.length})
+                      All Articles ({allBlogs.length})
                     </button>
                   </li>
                   {categoryCounts.map((cat) => (

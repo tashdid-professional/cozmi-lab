@@ -1,9 +1,20 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Send } from "lucide-react";
-import { footerData } from "@/public/datas/homepage";
+import { getFooterData } from "@/src/services/api";
+import type { FooterData } from "@/src/types";
 
 export function Footer() {
+  const [footerData, setFooterData] = useState<FooterData | null>(null);
+
+  useEffect(() => {
+    getFooterData().then(setFooterData);
+  }, []);
+
+  if (!footerData) return null;
   return (
     <footer className="bg-[#4B4036] text-white pt-24 pb-12">
       {/* Instagram Space Section */}

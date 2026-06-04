@@ -1,12 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { faqs } from "@/public/datas/legal";
+import { getFAQs } from "@/src/services/api";
+import type { FAQ } from "@/src/types";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [faqItems, setFaqItems] = useState<FAQ[]>([]);
+
+  useEffect(() => {
+    getFAQs().then(setFaqItems);
+  }, []);
+
+  if (faqItems.length === 0) return null;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -28,7 +36,7 @@ export default function FAQPage() {
         {/* Content Section */}
         <div className="container mx-auto px-4 py-20 max-w-3xl">
           <div className="space-y-4">
-            {faqs.map((faq, idx) => (
+            {faqItems.map((faq, idx) => (
               <div 
                 key={idx} 
                 className="border-b border-neutral-100 last:border-none"

@@ -1,11 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
-import { contactData } from "@/public/datas/homepage";
+import { getContactData } from "@/src/services/api";
+import type { ContactData } from "@/src/types";
 
 export default function ContactPage() {
+  const [contactInfo, setContactInfo] = useState<ContactData | null>(null);
+
+  useEffect(() => {
+    getContactData().then(setContactInfo);
+  }, []);
+
+  if (!contactInfo) return null;
+
   const iconMap: { [key: string]: any } = {
     Linkedin: Linkedin,
     Facebook: Facebook,
@@ -44,22 +53,22 @@ export default function ContactPage() {
               </div>
 
               <p className="text-[#] text-base md:text-[18px] leading-[1.8] mb-12 max-w-lg">
-                {contactData.description}
+                {contactInfo.description}
               </p>
 
               <div className="space-y-6 text-[#4B4036]">
                 <p className="text-sm md:text-base">
                   <span className="font-bold   text-[18px] mr-2">Address:</span>
-                  <span className="text-[#4b4036]">{contactData.address}</span>
+                  <span className="text-[#4b4036]">{contactInfo.address}</span>
                 </p>
                 <div className="flex flex-wrap gap-x-12 gap-y-4">
                   <p className="text-sm md:text-base">
                     <span className="font-bold   text-[18px] mr-2">Mail:</span>
-                    <a href={`mailto:${contactData.email}`} className="text-[#] hover:text-black transition-colors">{contactData.email}</a>
+                    <a href={`mailto:${contactInfo.email}`} className="text-[#] hover:text-black transition-colors">{contactInfo.email}</a>
                   </p>
                   <p className="text-sm md:text-base">
                     <span className="font-bold   text-[18px] mr-2">Phone:</span>
-                    <a href={`tel:${contactData.phone.replace(/\s+/g, '')}`} className="text-[#] hover:text-black transition-colors">{contactData.phone}</a>
+                    <a href={`tel:${contactInfo.phone.replace(/\s+/g, '')}`} className="text-[#] hover:text-black transition-colors">{contactInfo.phone}</a>
                   </p>
                 </div>
               </div>
@@ -67,8 +76,8 @@ export default function ContactPage() {
               <div className="mt-12">
                 <p className="font-bold   text-[18px] text-[#4B4036] mb-6">Social Media :</p>
                 <div className="flex gap-4">
-                  {contactData.socials.map((social, idx) => {
-                    const Icon = iconMap[social.icon];
+                  {contactInfo.socials.map((social, idx) => {
+                    const Icon = iconMap[social.icon as keyof typeof iconMap];
                     return (
                       <a 
                         key={idx}

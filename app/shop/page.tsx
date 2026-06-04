@@ -4,7 +4,8 @@ import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Search, Filter, X } from "lucide-react";
-import { products } from "@/public/datas/products";
+import { getProducts } from "@/src/services/api";
+import type { Product } from "@/src/types";
 import ProductCard from "@/app/components/ProductCard";
 
 const ITEMS_PER_PAGE = 12;
@@ -13,46 +14,45 @@ function ShopContent() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get("category");
 
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
+    getProducts().then(setAllProducts);
+  }, []);
+
+  useEffect(() => {
     setCurrentPage(1);
   }, [searchQuery, selectedCategory]);
 
   useEffect(() => {
-    if (categoryParam) {
-      // Find the actual category name that matches the slug
-      // Products have category as "Lip Gloss", slug might be "lip-gloss"
-      const foundCategory = products.find(
-        (p) => p.category.toLowerCase().replace(/\s+/g, '-') === categoryParam.toLowerCase()
+    if (allProducts.length === 0 || !categoryParam) return;
+    const foundCategory = allProducts.find(
+      (p) => p.category.toLowerCase().replace(/\s+/g, '-') === categoryParam.toLowerCase()
+    )?.category;
+
+    if (foundCategory) {
+      setSelectedCategory(foundCategory);
+    } else {
+      const directMatch = allProducts.find(
+        (p) => p.category.toLowerCase() === categoryParam.toLowerCase()
       )?.category;
-      
-      if (foundCategory) {
-        setSelectedCategory(foundCategory);
-      } else {
-        // Fallback: check if categoryParam directly matches any category name (case insensitive)
-        const directMatch = products.find(
-          (p) => p.category.toLowerCase() === categoryParam.toLowerCase()
-        )?.category;
-        if (directMatch) {
-          setSelectedCategory(directMatch);
-        }
+      if (directMatch) {
+        setSelectedCategory(directMatch);
       }
     }
-  }, [categoryParam]);
+  }, [categoryParam, allProducts]);
 
-  // Derived data
-  const categories = Array.from(new Set(products.map((p) => p.category)));
+  const categories = Array.from(new Set(allProducts.map((p) => p.category)));
   const categoryCounts = categories.map((cat) => ({
     name: cat,
-    count: products.filter((p) => p.category === cat).length,
+    count: allProducts.filter((p) => p.category === cat).length,
   }));
 
-  // Filtering logic
-  const filteredProducts = products.filter((product) => {
+  const filteredProducts = allProducts.filter((product) => {
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory ? product.category === selectedCategory : true;
     return matchesSearch && matchesCategory;
@@ -203,7 +203,7 @@ function ShopContent() {
                           selectedCategory === null ? "text-custom " : "text-[#4B4036]/60"
                         }`}
                       >
-                        All products ({products.length})
+                        All products ({allProducts.length})
                       </button>
                     </li>
                     {categoryCounts.map((cat) => (

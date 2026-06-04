@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Search, Menu, X } from "lucide-react";
-import { products } from "@/public/datas/products";
+import { getProducts } from "@/src/services/api";
+import type { Product } from "@/src/types";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Navbar() {
@@ -14,8 +15,13 @@ export function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [isSticky, setIsSticky] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
 
-  const filteredProducts = products.filter((product) =>
+  useEffect(() => {
+    getProducts().then(setAllProducts);
+  }, []);
+
+  const filteredProducts = allProducts.filter((product) =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   ).slice(0, 5);
 

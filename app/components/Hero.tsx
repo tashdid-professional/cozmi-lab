@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { heroSlides } from "@/public/datas/homepage";
+import { getHeroSlides } from "@/src/services/api";
+import type { HeroSlide } from "@/src/types";
 import SpinningText from "./SpinningText";
 
 export const Hero = () => {
@@ -13,6 +14,11 @@ export const Hero = () => {
     Autoplay({ delay: 4000, stopOnInteraction: false }),
   ]);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [slides, setSlides] = useState<HeroSlide[]>([]);
+
+  useEffect(() => {
+    getHeroSlides().then(setSlides);
+  }, []);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -30,11 +36,13 @@ export const Hero = () => {
     [emblaApi]
   );
 
+  if (slides.length === 0) return null;
+
   return (
     <section className="bg-[#F3F3F3] relative min-h-[820px] lg:h-[90vh] flex items-end lg:pt-26 pt-10 lg:pb-0 pb-20 md:pb-36 lg:overflow-visible">
       <div className="overflow-hidden w-full h-full" ref={emblaRef}>
         <div className="flex h-full">
-          {heroSlides.map((slide, index) => (
+          {slides.map((slide, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0 relative flex items-end h-full">
               <div className="container mx-auto px-6 pt-12 md:pt-24 pb-0">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
@@ -113,7 +121,7 @@ export const Hero = () => {
 
       {/* Navigation Dots */}
       <div className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-30">
-        {heroSlides.map((_, index) => (
+        {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => scrollTo(index)}

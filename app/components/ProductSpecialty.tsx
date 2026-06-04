@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { productSpecialties } from "@/public/datas/homepage";
+import { getProductSpecialties } from "@/src/services/api";
+import type { ProductSpecialtiesData } from "@/src/types";
 
 const iconMap = {
   rabbit: "/images/1.svg",
@@ -11,6 +12,14 @@ const iconMap = {
 };
 
 export const ProductSpecialty = () => {
+  const [data, setData] = useState<ProductSpecialtiesData | null>(null);
+
+  useEffect(() => {
+    getProductSpecialties().then(setData);
+  }, []);
+
+  if (!data) return null;
+
   return (
     <section className="py-20 md:py-32 bg-[#EFE0D1] overflow-hidden ">
       <div className="container mx-auto px-4 relative">
@@ -20,13 +29,13 @@ export const ProductSpecialty = () => {
             Our Product Specialty
           </h2>
           <p className="text-[11px] md:text-[14px] tracking-[3.25px] uppercase text-[#b2a69b]  font-medium">
-            {productSpecialties.subtitle}
+            {data.subtitle}
           </p>
         </div>
 
         {/* Icons Grid */}
         <div className="flex flex-wrap justify-center gap-12 md:gap-24 mb-10">
-          {productSpecialties.icons.map((specialty, idx) => {
+          {data.icons.map((specialty, idx) => {
             const iconSrc = iconMap[specialty.icon as keyof typeof iconMap] || "/images/1.svg";
             return (
               <div key={idx} className="flex flex-col items-center group">
@@ -50,7 +59,7 @@ export const ProductSpecialty = () => {
         {/* Text Area */}
         <div className=" mx-auto text-center relative ">
           <p className="text-2xl italic md:text-[43px] font-cormorant text-[#4B4036] leading-[1.6]">
-            {productSpecialties.description}
+            {data.description}
           </p>
         </div>
 

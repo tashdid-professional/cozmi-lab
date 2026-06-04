@@ -7,15 +7,26 @@ import { useParams } from "next/navigation";
 import { Navbar } from "@/app/components/Navbar";
 import { Footer } from "@/app/components/Footer";
 import ProductCard from "@/app/components/ProductCard";
-import { products } from "@/public/datas/products";
+import { getProducts, getProductBySlug } from "@/src/services/api";
+import type { Product, ProductVariant } from "@/src/types";
 
 
 export default function ProductDetailsPage() {
   const { slug } = useParams();
-  const product = products.find((p) => p.slug === slug);
+  const [product, setProduct] = useState<Product | undefined>(undefined);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [activeTab, setActiveTab] = useState("description");
-  const [selectedVariant, setSelectedVariant] = useState(product?.variants?.[0] || null);
+  const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  useEffect(() => {
+    getProductBySlug(slug as string).then(setProduct);
+    getProducts().then(setAllProducts);
+  }, [slug]);
+
+  useEffect(() => {
+    setSelectedVariant(product?.variants?.[0] || null);
+  }, [product]);
 
   useEffect(() => {
     setActiveImageIndex(0);
@@ -35,16 +46,14 @@ export default function ProductDetailsPage() {
     );
   }
 
-  const relatedProducts = products
+  const relatedProducts = allProducts
     .filter((p) => p.id !== product.id)
-    // Attempt to get variety by taking the first product seen from each category
-    .reduce((acc: typeof products, curr) => {
+    .reduce((acc: typeof allProducts, curr) => {
       const hasCategory = acc.some(p => p.category === curr.category);
       if (acc.length < 4 && !hasCategory) acc.push(curr);
       return acc;
     }, [])
-    // If we have fewer than 4 (e.g. only 2 categories exist), fill with any other products
-    .concat(products.filter(p => p.id !== product.id))
+    .concat(allProducts.filter(p => p.id !== product.id))
     .filter((p, i, self) => self.findIndex(t => t.id === p.id) === i)
     .slice(0, 4);
 

@@ -1,11 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { shopCategories } from "@/public/datas/homepage";
+import { getShopCategories } from "@/src/services/api";
+import type { ShopCategoryItem } from "@/src/types";
 
 export const ShopCategory = () => {
+  const [categories, setCategories] = useState<ShopCategoryItem[]>([]);
+
+  useEffect(() => {
+    getShopCategories().then(setCategories);
+  }, []);
+
+  if (categories.length === 0) return null;
+
   return (
     <section className="py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4 relative">
@@ -35,7 +44,7 @@ export const ShopCategory = () => {
 
         {/* Categories Grid - Adjusted for 3 up / 2 down layout from image */}
         <div className="lg:flex flex-wrap justify-center gap-12 md:gap-x-56 max-w-6xl mx-auto grid grid-cols-2 ">
-          {shopCategories.map((category, idx) => (
+          {categories.map((category, idx) => (
             <Link 
               key={idx} 
               href={`/shop?category=${category.slug}`}

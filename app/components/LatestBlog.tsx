@@ -1,10 +1,19 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { blogs } from "@/public/datas/blogs";
+import { getBlogs } from "@/src/services/api";
+import type { Blog } from "@/src/types";
 
 export function LatestBlog() {
-  // Taking the first 3 blogs for the "Latest" section as per the image
-  const latestBlogs = blogs.slice(0, 3);
+  const [latestBlogs, setLatestBlogs] = useState<Blog[]>([]);
+
+  useEffect(() => {
+    getBlogs().then((blogs) => setLatestBlogs(blogs.slice(0, 3)));
+  }, []);
+
+  if (latestBlogs.length === 0) return null;
 
   return (
     <section className="py-24 px-8 bg-white max-w-7xl mx-auto">

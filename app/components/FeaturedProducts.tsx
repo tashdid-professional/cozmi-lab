@@ -1,12 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
-import { products } from "@/public/datas/products";
+import { getProducts } from "@/src/services/api";
+import type { Product } from "@/src/types";
 
 export function FeaturedProducts() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const featured = products.filter(p => p.featured);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    getProducts().then(setAllProducts);
+  }, []);
+
+  const featured = allProducts.filter(p => p.featured);
+
+  if (allProducts.length === 0) return null;
   const itemsPerPage = 4;
   const numDots = Math.ceil(featured.length / itemsPerPage);
 

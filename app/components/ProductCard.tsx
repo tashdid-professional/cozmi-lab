@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Product } from "@/public/datas/products";
+import type { Product } from "@/src/types";
 import { createPortal } from "react-dom";
 
 

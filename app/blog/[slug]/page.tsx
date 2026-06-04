@@ -1,21 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { Search } from "lucide-react";
-import { blogs } from "@/public/datas/blogs";
+import { getBlogs } from "@/src/services/api";
+import type { Blog } from "@/src/types";
 
 export default function BlogDetailsPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const blog = blogs.find((b) => b.slug === slug);
-  const currentIndex = blogs.findIndex((b) => b.slug === slug);
-  const prevBlog = currentIndex > 0 ? blogs[currentIndex - 1] : null;
-  const nextBlog = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : null;
-
+  const [allBlogs, setAllBlogs] = useState<Blog[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    getBlogs().then(setAllBlogs);
+  }, []);
+
+  const blog = allBlogs.find((b) => b.slug === slug);
+  const currentIndex = allBlogs.findIndex((b) => b.slug === slug);
+  const prevBlog = currentIndex > 0 ? allBlogs[currentIndex - 1] : null;
+  const nextBlog = currentIndex < allBlogs.length - 1 ? allBlogs[currentIndex + 1] : null;
 
   if (!blog) {
     return (
@@ -27,10 +33,10 @@ export default function BlogDetailsPage() {
   }
 
   // Derived data for sidebar
-  const categories = Array.from(new Set(blogs.map((b) => b.category)));
+  const categories = Array.from(new Set(allBlogs.map((b) => b.category)));
   const categoryCounts = categories.map((cat) => ({
     name: cat,
-    count: blogs.filter((b) => b.category === cat).length,
+    count: allBlogs.filter((b) => b.category === cat).length,
   }));
 
   return (
@@ -155,7 +161,7 @@ export default function BlogDetailsPage() {
                       href="/blog"
                       className="text-[14px] font-lato tracking-[0.2em] uppercase transition-colors hover:text-custom w-full text-left text-[#4B4036]/60 block"
                     >
-                      All Articles ({blogs.length})
+                      All Articles ({allBlogs.length})
                     </Link>
                   </li>
                   {categoryCounts.map((cat) => (
