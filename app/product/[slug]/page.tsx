@@ -233,7 +233,7 @@ export default function ProductDetailsPage() {
             </button>
           </div>
 
-          <div className="py-2 max-w-4xl mx-auto text-center">
+          <div className="py-2 max-w-4xl mx-auto ">
             {activeTab === "description" ? (
               <div className="animate-fadeIn">
                 <p className="text-custom text-base md:text-[17px] leading-[1.8] font-medium">

@@ -36,6 +36,29 @@ export const termsConditions = {
   ]
 };
 
+export const oem = {
+  title: "OEM / Private Label",
+  lastUpdated: "June 1, 2026",
+  sections: [
+    {
+      heading: "Custom Formulation",
+      content: "We offer bespoke formulation services tailored to your brand's unique vision. Our team of experienced chemists works closely with you to develop products that meet your specifications, from concept to finished product."
+    },
+    {
+      heading: "Private Label Manufacturing",
+      content: "Choose from our extensive catalog of premium skincare and cosmetic formulations. We provide full private labeling services including custom packaging, labeling, and branding to help you launch your product line quickly and efficiently."
+    },
+    {
+      heading: "Quality Assurance",
+      content: "All OEM and private label products undergo rigorous quality control testing to ensure they meet the highest standards of safety, efficacy, and consistency. We are committed to delivering excellence in every batch."
+    },
+    {
+      heading: "Minimum Order Quantities",
+      content: "We offer flexible minimum order quantities to accommodate businesses of all sizes. Whether you are a startup looking to test the market or an established brand scaling your product line, we have solutions that work for you."
+    }
+  ]
+};
+
 export const faqs = [
   {
     question: "How long does shipping take?",

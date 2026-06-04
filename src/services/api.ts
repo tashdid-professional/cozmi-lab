@@ -10,6 +10,7 @@ import type {
   AboutData,
   PrivacyPolicy,
   TermsConditions,
+  OemData,
   FAQ,
 } from "@/src/types";
 
@@ -27,6 +28,7 @@ import { contactData as mockContactData } from "@/public/datas/homepage";
 import { aboutData as mockAboutData } from "@/public/datas/about";
 import { privacyPolicy as mockPrivacyPolicy } from "@/public/datas/legal";
 import { termsConditions as mockTermsConditions } from "@/public/datas/legal";
+import { oem as mockOem } from "@/public/datas/legal";
 import { faqs as mockFAQs } from "@/public/datas/legal";
 
 // ---------------------------------------------------------------------------
@@ -132,6 +134,16 @@ export async function getAboutData(): Promise<AboutData> {
   // if (!res.ok) throw new Error("Failed to fetch about data");
   // return res.json();
   return mockAboutData;
+}
+
+// ---------------------------------------------------------------------------
+// OEM / Private Label
+// ---------------------------------------------------------------------------
+export async function getOemData(): Promise<OemData> {
+  // const res = await fetch(`${API_BASE}/oem`);
+  // if (!res.ok) throw new Error("Failed to fetch OEM data");
+  // return res.json();
+  return mockOem;
 }
 
 // ---------------------------------------------------------------------------

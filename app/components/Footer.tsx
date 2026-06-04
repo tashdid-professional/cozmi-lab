@@ -125,7 +125,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-center items-center gap-6 text-[14px] font-lato tracking-[0.1em] text-white ">
+        <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-center items-center gap-6 text-[15px] font-lato  text-white ">
           <p>© 2026 Cozmi Lab | Powered by <a href="https://www.thebigdogdigital.com/" target="_blank" className="text-white font-bold transition-colors">BigDog Digital</a>.</p>
         
         </div>

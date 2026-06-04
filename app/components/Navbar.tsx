@@ -75,6 +75,7 @@ export function Navbar() {
           <Link href="/shop" className="hover:text-custom2 transition-colors uppercase">Shop</Link>
           <Link href="/about" className="hover:text-custom2 transition-colors uppercase">About</Link>
           <Link href="/contact" className="hover:text-custom2 transition-colors uppercase">Contact Us</Link>
+          <Link href="/oem" className="hover:text-custom2 transition-colors uppercase">OEM</Link>
         </div>
 
         {/* Search & Mobile Menu Controls */}
@@ -116,6 +117,7 @@ export function Navbar() {
               <Link href="/shop" onClick={() => setIsMenuOpen(false)}>Shop</Link>
               <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
               <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
+              <Link href="/oem" onClick={() => setIsMenuOpen(false)}>OEM</Link>
             </div>
           </motion.div>
         )}

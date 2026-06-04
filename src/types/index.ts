@@ -144,6 +144,12 @@ export interface TermsConditions {
   sections: PolicySection[];
 }
 
+export interface OemData {
+  title: string;
+  lastUpdated: string;
+  sections: PolicySection[];
+}
+
 export interface FAQ {
   question: string;
   answer: string;
