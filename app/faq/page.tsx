@@ -34,7 +34,7 @@ export default function FAQPage() {
         </div>
 
         {/* Content Section */}
-        <div className="container mx-auto px-4 py-20 max-w-3xl">
+        <div className="container mx-auto px-4 lg:px-12 px-4 py-20 ">
           <div className="space-y-4">
             {faqItems.map((faq, idx) => (
               <div 

@@ -32,7 +32,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         {/* Content Section */}
-        <div className="container mx-auto px-4 py-20 max-w-4xl">
+        <div className="container mx-auto px-4 lg:px-12 py-20 ">
           <p className="text-[11px] font-lato tracking-[0.2em] text-[#4B4036]/60 uppercase mb-12">
             Last Updated: {policy.lastUpdated}
           </p>
