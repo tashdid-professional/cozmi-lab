@@ -44,7 +44,7 @@ export const Hero = () => {
         <div className="flex h-full">
           {slides.map((slide, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0 relative flex items-end h-full">
-              <div className="container mx-auto px-6 pt-12 md:pt-24 pb-0">
+              <div className="container mx-auto px-6 pt-12 md:pt-24 lg:pb-0 pb-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
                   
                   {/* Left Side: Image with Arch and Tree */}
