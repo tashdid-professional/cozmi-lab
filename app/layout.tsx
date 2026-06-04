@@ -28,6 +28,11 @@ const lato = Lato({
 export const metadata: Metadata = {
   title: "Cozmi Lab",
   description: "",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/images/favicon.png",
+  },
 };
 
 export default function RootLayout({

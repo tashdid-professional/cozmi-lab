@@ -13,6 +13,21 @@ const slideVariants = {
   exit: (dir: number) => ({ x: dir > 0 ? -80 : 80, opacity: 0 }),
 };
 
+const sectionVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.6 } },
+};
+
+const imageReveal = {
+  hidden: { opacity: 0, x: -60, scale: 0.95 },
+  visible: { opacity: 1, x: 0, scale: 1, transition: { duration: 0.8, ease: "easeOut" as const } },
+};
+
+const contentReveal = {
+  hidden: { opacity: 0, x: 60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" as const, delay: 0.15 } },
+};
+
 export function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [items, setItems] = useState<Testimonial[]>([]);
@@ -41,7 +56,7 @@ export function Testimonials() {
         setDirection(1);
         return next;
       });
-    }, 4000);
+    }, 3000);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
@@ -50,14 +65,21 @@ export function Testimonials() {
   if (items.length === 0) return null;
 
   return (
-    <section
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      variants={sectionVariants}
       className="bg-[#F8F6F4] py-24 px-8 overflow-hidden"
-    
+     
     >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-6 "  onMouseEnter={() => setIsPaused(true)}
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-6"  onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}>
-        {/* Left: Image */}
-        <div className="w-full md:w-[40%] flex justify-center items-end relative">
+        <motion.div
+          variants={imageReveal}
+          className="w-full md:w-[40%] flex justify-center items-end relative"
+        
+        >
           <div className="relative w-full aspect-[4/5] max-w-[450px] overflow-hidden">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
@@ -80,10 +102,12 @@ export function Testimonials() {
               </motion.div>
             </AnimatePresence>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Right: Content */}
-        <div className="w-full md:w-[60%] relative">
+        <motion.div
+          variants={contentReveal}
+          className="w-full md:w-[60%] relative"
+        >
           <h2 className="headline mb-8 text-left font-medium">Testimonials</h2>
 
           <div className="relative z-10">
@@ -143,8 +167,8 @@ export function Testimonials() {
           <div className="absolute lg:bottom-20 lg:right-20 right-0 -translate-y-1/2 opacity-[0.3] pointer-events-none transform scale-[4]">
             <Quote size={30} className="text-custom fill-custom" />
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

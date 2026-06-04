@@ -20,7 +20,7 @@ export const testimonials = [
     name: "Michael Chen",
     role: "DESIGNER",
     content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-    rating: 4,
+    rating: 5,
     image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800"
   }
 ];

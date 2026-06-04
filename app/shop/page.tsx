@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 import { Search, Filter, X } from "lucide-react";
 import { getProducts } from "@/src/services/api";
@@ -68,11 +69,41 @@ function ShopContent() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const revealUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
+  };
+
+  const sidebarReveal = {
+    hidden: { opacity: 0, x: -40 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.95 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut" as const, delay: i * 0.06 },
+    }),
+  };
+
+  const emptyVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" as const } },
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <main className="grow bg-white">
-        {/* Breadcrumb Section */}
-        <div className="bg-[#FAF6F1] pt-32 pb-16 md:py-32 text-center">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={revealUp}
+          className="bg-[#FAF6F1] pt-32 pb-16 md:py-32 text-center"
+        >
           <div className="container mx-auto px-4">
             <h1 className="text-4xl md:text-[64px] font-cormorant italic text-[#4B4036] mb-6">
               Shop
@@ -83,14 +114,12 @@ function ShopContent() {
               <Link href="/shop" className="text-[#4B4036]/60 hover:text-black transition-colors">Shop</Link>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Content Section */}
         <div className="container mx-auto px-4 py-8 md:py-24">
           <div className="flex flex-col lg:flex-row gap-12">
             
-            {/* Mobile Filter Button - Sticky */}
-            <div className="lg:hidden  top-[70px] z-30 bg-white py-4 mb-6 border-b border-neutral-100 flex justify-between items-center">
+            <div className="lg:hidden top-[70px] z-30 bg-white py-4 mb-6 border-b border-neutral-100 flex justify-between items-center">
               <button 
                 onClick={() => setIsSidebarOpen(true)}
                 className="flex items-center gap-2 text-[12px] font-lato tracking-[0.2em] uppercase font-bold text-custom"
@@ -103,19 +132,32 @@ function ShopContent() {
               </span>
             </div>
 
-            {/* Main Products Grid */}
             <div className="lg:w-[70%] order-2 lg:order-1">
               {currentProducts.length > 0 ? (
                 <>
                   <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4">
-                    {currentProducts.map((product) => (
-                      <ProductCard key={product.id} product={product} />
+                    {currentProducts.map((product, i) => (
+                      <motion.div
+                        key={product.id}
+                        custom={i}
+                        variants={cardVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-20px" }}
+                      >
+                        <ProductCard product={product} />
+                      </motion.div>
                     ))}
                   </div>
 
-                  {/* Pagination */}
                   {totalPages > 1 && (
-                    <div className="mt-16 flex justify-center items-center gap-4">
+                    <motion.div
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                      variants={revealUp}
+                      className="mt-16 flex justify-center items-center gap-4"
+                    >
                       {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                         <button
                           key={page}
@@ -129,11 +171,17 @@ function ShopContent() {
                           {page.toString().padStart(2, "0")}
                         </button>
                       ))}
-                    </div>
+                    </motion.div>
                   )}
                 </>
               ) : (
-                <div className="text-center py-20">
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={emptyVariants}
+                  className="text-center py-20"
+                >
                   <p className="text-[#4B4036]/60 font-lato text-lg">
                     No products found matching your criteria.
                   </p>
@@ -146,19 +194,21 @@ function ShopContent() {
                   >
                     Clear all filters
                   </button>
-                </div>
+                </motion.div>
               )}
             </div>
 
-            {/* Sidebar / Filters */}
-            <aside 
+            <motion.aside
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={sidebarReveal}
               className={`
                 fixed inset-0 z-[100] bg-white transform transition-transform duration-500 lg:static lg:block lg:w-[30%] lg:translate-x-0 lg:z-auto
                 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
                 order-1 lg:order-2
               `}
             >
-              {/* Mobile Header for Sidebar */}
               <div className="lg:hidden flex justify-between items-center p-6 border-b border-neutral-100">
                 <h3 className="text-[24px] font-cormorant italic text-[#4B4036]">
                   Filters
@@ -169,7 +219,6 @@ function ShopContent() {
               </div>
 
               <div className="h-full overflow-y-auto lg:overflow-visible p-8 lg:p-0 space-y-12 pb-32 lg:pb-0">
-                {/* Search Widget */}
                 <div className="space-y-6">
                   <h3 className="text-[36px] font-cormorant italic text-[#4B4036]">
                     Search
@@ -187,7 +236,6 @@ function ShopContent() {
                   </div>
                 </div>
 
-                {/* Categories Widget */}
                 <div className="space-y-6">
                   <h3 className="text-[36px] font-cormorant italic text-[#4B4036]">
                     Product categories
@@ -224,9 +272,8 @@ function ShopContent() {
                   </ul>
                 </div>
               </div>
-            </aside>
+            </motion.aside>
 
-            {/* Mobile Overlay */}
             {isSidebarOpen && (
               <div 
                 className="fixed inset-0 bg-black/20 z-[90] lg:hidden"
