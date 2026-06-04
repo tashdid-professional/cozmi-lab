@@ -10,7 +10,7 @@ export function LatestBlog() {
   const [latestBlogs, setLatestBlogs] = useState<Blog[]>([]);
 
   useEffect(() => {
-    getBlogs().then((blogs) => setLatestBlogs(blogs.slice(0, 3)));
+    getBlogs().then((blogs) => setLatestBlogs(blogs.filter((b) => b.isFeatured).slice(0, 3)));
   }, []);
 
   if (latestBlogs.length === 0) return null;
