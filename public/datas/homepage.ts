@@ -115,7 +115,7 @@ export const footerData = {
 };
 
 export const contactData = {
-  address: "58 A, East Madison Street, Baltimore, MD, USA 4508",
+  address: "554 A, East Madison Street, Baltimore, MD, USA 4508",
   email: "info@creamz.com",
   phone: "0000 - 123 - 456789",
   socials: [
